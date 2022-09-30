@@ -1,5 +1,5 @@
 vim.g.lushwal_configuration = {
-compile_to_vimscript = true,
+compile_to_vimscript = false,
 color_overrides = nil,
 addons = {
 	ale = false,
@@ -39,13 +39,13 @@ addons = {
 
 vim.cmd[[set termguicolors]]
 vim.cmd[[colorscheme lushwal]]
-vim.cmd[[LushwalCompile]]
---
+vim.cmd[[colorscheme lushwal]]
+-- vim.cmd[[LushwalCompile]]
+
 -- require('onedark').setup {
     -- style = 'darker'
 -- }
 -- require('onedark').load()
-
 -- local pywal = require('pywal')
 --
 -- pywal.setup()

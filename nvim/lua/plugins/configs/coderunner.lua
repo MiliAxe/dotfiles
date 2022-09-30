@@ -4,6 +4,7 @@ require('code_runner').setup({
 		java = "cd $dir && javac $fileName && java $fileNameWithoutExt",
 		python = "python3 -u",
 		typescript = "deno run",
-		rust = "cd $dir && rustc $fileName && $dir/$fileNameWithoutExt"
+		rust = "cd $dir && rustc $fileName && $dir/$fileNameWithoutExt",
+    cpp = "cd $dir && g++ -o $fileNameWithoutExt.out $fileName && ./$fileNameWithoutExt.out"
 	},
 })
