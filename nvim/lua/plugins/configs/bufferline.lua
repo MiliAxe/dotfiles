@@ -11,6 +11,6 @@ require('bufferline').setup {
           separator = true,
         },
     },
-    separator_style = "slant"
+    separator_style = "thick"
   },
 }

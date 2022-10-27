@@ -5,7 +5,7 @@ vim.api.nvim_set_keymap('i', 'jk', '<ESC>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-n>', ':NvimTreeToggle<cr>', { noremap = true})
 
 -- code runner
-vim.keymap.set('n', '<leader>r', ':RunCode<CR>', { noremap = true, silent = false })
+vim.keymap.set('n', '<leader>rr', ':RunCode<CR>', { noremap = true, silent = false })
 vim.keymap.set('n', '<leader>rf', ':RunFile<CR>', { noremap = true, silent = false })
 vim.keymap.set('n', '<leader>rft', ':RunFile tab<CR>', { noremap = true, silent = false })
 vim.keymap.set('n', '<leader>rp', ':RunProject<CR>', { noremap = true, silent = false })
@@ -23,10 +23,19 @@ vim.api.nvim_set_keymap('n', '[b', '<CMD>BufferLineMovePrev<CR>', { noremap = tr
 vim.api.nvim_set_keymap('n', 'gs', '<CMD>BufferLineSortByDirectory<CR>', { noremap = true, silent = true, desc = "Sort buffer by directory"})
 
 -- formating
-vim.api.nvim_set_keymap('n', '<leader>f', '<CMD>lua vim.lsp.buf.formatting_sync()<CR>', {noremap = true, silent = true, desc = "Format the current buffer"})
+vim.api.nvim_set_keymap('n', '<leader>f', '<CMD>lua vim.lsp.buf.format()<CR>', {noremap = true, silent = true, desc = "Format the current buffer"})
 
--- local wk = require("which-key")
---
--- wk.register({
---
--- })
+local wk = require("which-key")
+
+wk.register({
+	["<localleader>"] = {
+		l = {
+			name = "+Latex"
+		}
+	},
+	["<leader>"] = {
+		w = { "<cmd>write<cr>", "Write current buffer" },
+		r = { name = "+RunCode" },
+
+	}
+})

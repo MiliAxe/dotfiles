@@ -1,1 +1,9 @@
-playerctl -p $(cat /tmp/player) metadata --format '{{artist}} - {{title}}'
+playerctl -s -p $(< ~/.config/polybar/scripts/tmplayer) metadata --format '{{artist}} - {{title}}'
+
+status=$(playerctl -s -p $(< ~/.config/polybar/scripts/tmplayer) status)
+
+if [[ $status == "" ]]
+then
+	echo "Offline"
+fi
+

@@ -145,6 +145,11 @@ _G.packer_plugins = {
     path = "/home/mili/.local/share/nvim/site/pack/packer/start/code_runner.nvim",
     url = "https://github.com/CRAG666/code_runner.nvim"
   },
+  ["feline.nvim"] = {
+    loaded = true,
+    path = "/home/mili/.local/share/nvim/site/pack/packer/start/feline.nvim",
+    url = "https://github.com/feline-nvim/feline.nvim"
+  },
   ["formatter.nvim"] = {
     loaded = true,
     path = "/home/mili/.local/share/nvim/site/pack/packer/start/formatter.nvim",
@@ -154,6 +159,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/mili/.local/share/nvim/site/pack/packer/start/friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
+  },
+  ["gitsigns.nvim"] = {
+    loaded = true,
+    path = "/home/mili/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
+    url = "https://github.com/lewis6991/gitsigns.nvim"
   },
   ["guess-indent.nvim"] = {
     config = { "\27LJ\2\n>\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\17guess-indent\frequire\0" },
@@ -165,11 +175,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/mili/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
     url = "https://github.com/lukas-reineke/indent-blankline.nvim"
-  },
-  ["indent-o-matic"] = {
-    loaded = true,
-    path = "/home/mili/.local/share/nvim/site/pack/packer/start/indent-o-matic",
-    url = "https://github.com/Darazaki/indent-o-matic"
   },
   ["lsp-colors.nvim"] = {
     loaded = true,
@@ -185,17 +190,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/mili/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
-  },
-  ["lush.nvim"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/mili/.local/share/nvim/site/pack/packer/opt/lush.nvim",
-    url = "https://github.com/rktjmp/lush.nvim"
-  },
-  lushwal = {
-    loaded = true,
-    path = "/home/mili/.local/share/nvim/site/pack/packer/start/lushwal",
-    url = "https://github.com/oncomouse/lushwal"
   },
   ["mason-lspconfig.nvim"] = {
     loaded = true,
@@ -223,10 +217,10 @@ _G.packer_plugins = {
     path = "/home/mili/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
   },
-  ["nvim-colorizer.lua"] = {
+  ["nvim-highlight-colors"] = {
     loaded = true,
-    path = "/home/mili/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua",
-    url = "https://github.com/NvChad/nvim-colorizer.lua"
+    path = "/home/mili/.local/share/nvim/site/pack/packer/start/nvim-highlight-colors",
+    url = "https://github.com/brenoprata10/nvim-highlight-colors"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
@@ -279,12 +273,6 @@ _G.packer_plugins = {
     path = "/home/mili/.local/share/nvim/site/pack/packer/start/pywal",
     url = "https://github.com/AlphaTechnolog/pywal.nvim"
   },
-  ["shipwright.nvim"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/mili/.local/share/nvim/site/pack/packer/opt/shipwright.nvim",
-    url = "https://github.com/rktjmp/shipwright.nvim"
-  },
   ["startup.nvim"] = {
     config = { "\27LJ\2\n^\0\0\5\0\4\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0006\2\0\0'\4\3\0B\2\2\0A\0\0\1K\0\1\0!plugins.configs.startup_nvim\nsetup\fstartup\frequire\0" },
     loaded = true,
@@ -312,6 +300,11 @@ _G.packer_plugins = {
     path = "/home/mili/.local/share/nvim/site/pack/packer/start/vim-move",
     url = "https://github.com/matze/vim-move"
   },
+  vimtex = {
+    loaded = true,
+    path = "/home/mili/.local/share/nvim/site/pack/packer/start/vimtex",
+    url = "https://github.com/lervag/vimtex"
+  },
   ["which-key.nvim"] = {
     config = { "\27LJ\2\n;\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\14which-key\frequire\0" },
     loaded = true,
@@ -325,6 +318,10 @@ time([[Defining packer_plugins]], false)
 time([[Config for guess-indent.nvim]], true)
 try_loadstring("\27LJ\2\n>\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\17guess-indent\frequire\0", "config", "guess-indent.nvim")
 time([[Config for guess-indent.nvim]], false)
+-- Config for: Comment.nvim
+time([[Config for Comment.nvim]], true)
+try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fComment\frequire\0", "config", "Comment.nvim")
+time([[Config for Comment.nvim]], false)
 -- Config for: startup.nvim
 time([[Config for startup.nvim]], true)
 try_loadstring("\27LJ\2\n^\0\0\5\0\4\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0006\2\0\0'\4\3\0B\2\2\0A\0\0\1K\0\1\0!plugins.configs.startup_nvim\nsetup\fstartup\frequire\0", "config", "startup.nvim")
@@ -337,18 +334,14 @@ time([[Config for nvim-surround]], false)
 time([[Config for nvim-autopairs]], true)
 try_loadstring("\27LJ\2\n@\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\19nvim-autopairs\frequire\0", "config", "nvim-autopairs")
 time([[Config for nvim-autopairs]], false)
--- Config for: toggleterm.nvim
-time([[Config for toggleterm.nvim]], true)
-try_loadstring("\27LJ\2\n8\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\15toggleterm\frequire\0", "config", "toggleterm.nvim")
-time([[Config for toggleterm.nvim]], false)
--- Config for: Comment.nvim
-time([[Config for Comment.nvim]], true)
-try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fComment\frequire\0", "config", "Comment.nvim")
-time([[Config for Comment.nvim]], false)
 -- Config for: which-key.nvim
 time([[Config for which-key.nvim]], true)
 try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\14which-key\frequire\0", "config", "which-key.nvim")
 time([[Config for which-key.nvim]], false)
+-- Config for: toggleterm.nvim
+time([[Config for toggleterm.nvim]], true)
+try_loadstring("\27LJ\2\n8\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\15toggleterm\frequire\0", "config", "toggleterm.nvim")
+time([[Config for toggleterm.nvim]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

@@ -1,7 +1,7 @@
 const { exec } = require("child_process");
 fs = require('fs');
 
-const file = "/tmp/player"
+const file = "/home/mili/.config/polybar/scripts/tmplayer"
 
 
 function getPlayers() {

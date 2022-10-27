@@ -20,7 +20,6 @@ local cmp = require("cmp")
 
 
 cmp.setup {
-
   mapping = cmp.mapping.preset.insert({
     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
@@ -37,12 +36,17 @@ cmp.setup {
     ["<C-n>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
     ["<C-p>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
     ["<C-'>"] = cmp.mapping(function()
-      luasnip.expand_or_jump()
+      luasnip.jump(1)
     end
       , { "i", "s" }),
 
     ["<C-;>"] = cmp.mapping(function()
       luasnip.jump(-1)
+    end
+      , { "i", "s" }),
+
+    ["<C-h>"] = cmp.mapping(function()
+        luasnip.change_choice(1)
     end
       , { "i", "s" }),
   }),
@@ -53,9 +57,9 @@ cmp.setup {
     { name = "path" },
     { name = "luasnip" },
     { name = "buffer", keyword_length = 5 },
-    { name = "spell", keyword_length = 5 },
+    { name = "spell", keyword_length = 8 },
     { name = "emoji" },
-    { name = "cmdline" },
+    { name = "cmdline", keyword_length = 5 },
     { name = "look", keyword_length = 5 },
   },
 
@@ -66,10 +70,10 @@ cmp.setup {
     end,
   },
 
-  window = {
-    completion = cmp.config.window.bordered(),
-    documentation = cmp.config.window.bordered(),
-  },
+  -- window = {
+  --   completion = cmp.config.window.bordered(),
+  --   documentation = cmp.config.window.bordered(),
+  -- },
 
   formatting = {
     format = lspkind.cmp_format {
@@ -91,12 +95,15 @@ cmp.setup {
     ghost_text = true,
     native_menu = false,
   },
+  
+  preselect = cmp.PreselectMode.None
 }
 
 cmp.event:on(
   'confirm_done',
   cmp_autopairs.on_confirm_done()
 )
+
 
 -- `/` cmdline setup.
 cmp.setup.cmdline('/', {

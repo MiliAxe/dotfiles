@@ -12,22 +12,19 @@ return require('packer').startup(function()
 	}
 
 	--colorcode show
-	use 'NvChad/nvim-colorizer.lua'
+	-- use 'NvChad/nvim-colorizer.lua'
+
+	use 'brenoprata10/nvim-highlight-colors'
 
 	--lsp configurator
 	use 'neovim/nvim-lspconfig'
 
-	-- coq completion
-	-- use 'ms-jpq/coq_nvim'
-	-- use 'ms-jpq/coq.artifacts'
-	-- use 'ms-jpq/coq.thirdparty'
-	--
 	use { 'AlphaTechnolog/pywal.nvim', as = 'pywal' }
 
-	use {
-		"oncomouse/lushwal",
-		requires = { { "rktjmp/lush.nvim", opt = true }, { "rktjmp/shipwright.nvim", opt = true } },
-	}
+	-- use {
+	-- 	"oncomouse/lushwal",
+	-- 	requires = { { "rktjmp/lush.nvim", opt = true }, { "rktjmp/shipwright.nvim", opt = true } },
+	-- }
 
 	use {
 		'nvim-lualine/lualine.nvim',
@@ -66,7 +63,7 @@ return require('packer').startup(function()
 		config = function() require('guess-indent').setup {} end,
 	}
 
-	use 'Darazaki/indent-o-matic'
+	-- use 'Darazaki/indent-o-matic'
 
 	use {
 		'numToStr/Comment.nvim',
@@ -149,5 +146,14 @@ return require('packer').startup(function()
 	    }
 	  end
 	}
+
+	use 'feline-nvim/feline.nvim'
+
+	use {
+  'lewis6991/gitsigns.nvim',
+  -- tag = 'release' -- To use the latest release (do not use this if you run Neovim nightly or dev builds!)
+}
+	use 'lervag/vimtex'
+
 
 end)
