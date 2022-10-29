@@ -11,6 +11,6 @@
 + **Application launcher:** Rofi
 
 ### Screenshots
-![Latex workspace](Screenshots/Latex\ Workspace.png) 
+![Latex workspace](Screenshots/Latex Workspace.png) 
 ![Music](Screenshots/Music.png) 
 ![Spotify](Screenshots/Spotify.png) 
