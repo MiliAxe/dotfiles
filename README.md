@@ -9,3 +9,8 @@
 + **Colorscheme:** Pywal + Wpgtk + qt6gtk2 + qt5-styleplugins
 + **Terminal:** Kitty
 + **Application launcher:** Rofi
+
+### Screenshots
+![Latex workspace](Screenshots/Latex\ Workspace.png) 
+![Music](Screenshots/Music.png) 
+![Spotify](Screenshots/Spotify.png) 
