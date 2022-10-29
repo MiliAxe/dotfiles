@@ -36,6 +36,9 @@ wk.register({
 	["<leader>"] = {
 		w = { "<cmd>write<cr>", "Write current buffer" },
 		r = { name = "+RunCode" },
+		q = { "<cmd>quit<cr>", "Exit current buffer" },
+		e = { "<cmd>NvimTreeToggle<cr>", "Toggle explorer" },
+		s = { "<cmd>lua require('silicon').visualise_api({to_clip = true})<cr>", "Screenshot selected code"}
 
-	}
+	},
 })

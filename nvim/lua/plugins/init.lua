@@ -1,5 +1,5 @@
 return require('packer').startup(function()
-	-- packer can manage itself 
+	-- packer can manage itself
 	use 'wbthomason/packer.nvim'
 
 	-- the file picker (Nvim-tree)
@@ -51,6 +51,7 @@ return require('packer').startup(function()
 	}
 
 	use { "nvim-telescope/telescope-file-browser.nvim" }
+	use { "nvim-telescope/telescope-media-files.nvim" }
 
 	use {
 		'nvim-treesitter/nvim-treesitter',
@@ -137,23 +138,45 @@ return require('packer').startup(function()
 	use 'matze/vim-move'
 
 	use {
-	  "folke/which-key.nvim",
-	  config = function()
-	    require("which-key").setup {
-	      -- your configuration comes here
-	      -- or leave it empty to use the default settings
-	      -- refer to the configuration section below
-	    }
-	  end
+		"folke/which-key.nvim",
+		config = function()
+			require("which-key").setup {
+				-- your configuration comes here
+				-- or leave it empty to use the default settings
+				-- refer to the configuration section below
+			}
+		end
 	}
 
 	use 'feline-nvim/feline.nvim'
 
 	use {
-  'lewis6991/gitsigns.nvim',
-  -- tag = 'release' -- To use the latest release (do not use this if you run Neovim nightly or dev builds!)
-}
+		'lewis6991/gitsigns.nvim',
+		-- tag = 'release' -- To use the latest release (do not use this if you run Neovim nightly or dev builds!)
+	}
 	use 'lervag/vimtex'
 
+	-- Packer
+	use({
+		"folke/noice.nvim",
+		config = function()
+			require("noice").setup()
+		end,
+		requires = {
+			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+			"MunifTanjim/nui.nvim",
+			-- OPTIONAL:
+			--   `nvim-notify` is only needed, if you want to use the notification view.
+			--   If not available, we use `mini` as the fallback
+			"rcarriga/nvim-notify",
+		}
+	})
 
+	use {
+		"narutoxy/silicon.lua",
+		requires = { "nvim-lua/plenary.nvim" },
+		config = function()
+			require('silicon').setup({})
+		end
+	}
 end)
