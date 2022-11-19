@@ -1,6 +1,7 @@
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
-vim.opt.spell = true
+-- vim.lsp.set_log_level("debug")
+vim.opt.spell = false
 vim.opt.spelllang = { 'en_us' }
 
 local lspkind = require('lspkind')
@@ -17,7 +18,6 @@ end
 
 local luasnip = require("luasnip")
 local cmp = require("cmp")
-
 
 cmp.setup {
   mapping = cmp.mapping.preset.insert({
@@ -46,7 +46,7 @@ cmp.setup {
       , { "i", "s" }),
 
     ["<C-h>"] = cmp.mapping(function()
-        luasnip.change_choice(1)
+      luasnip.change_choice(1)
     end
       , { "i", "s" }),
   }),
@@ -59,7 +59,7 @@ cmp.setup {
     { name = "buffer", keyword_length = 5 },
     { name = "spell", keyword_length = 8 },
     { name = "emoji" },
-    { name = "cmdline", keyword_length = 5 },
+    -- { name = "cmdline", keyword_length = 5 },
     { name = "look", keyword_length = 5 },
   },
 
@@ -70,32 +70,35 @@ cmp.setup {
     end,
   },
 
-  -- window = {
-  --   completion = cmp.config.window.bordered(),
-  --   documentation = cmp.config.window.bordered(),
-  -- },
+  window = {
+    -- completion = cmp.config.window.bordered(),
+    -- documentation = cmp.config.window.bordered(),
+  },
 
   formatting = {
     format = lspkind.cmp_format {
-      with_text = true,
+      with_text = false,
       menu = {
-        nvim_lua = "[API]",
-        buffer = "[Buf]",
-        nvim_lsp = "[LSP]",
-        path = "[Path]",
-        luasnip = "[Snip]",
-        look = "[Look]",
-        spell = "[Spell]",
-        cmdline = "[CMD]",
+        nvim_lua = "API",
+        buffer = "Buf",
+        nvim_lsp = "LSP",
+        path = "Path",
+        luasnip = "Snip",
+        look = "Look",
+        spell = "Spell",
+        cmdline = "CMD",
       }
     },
   },
 
   experimental = {
     ghost_text = true,
-    native_menu = false,
+    -- native_menu = true,
   },
-  
+  view = {
+    entries = "custom"
+  },
+
   preselect = cmp.PreselectMode.None
 }
 
@@ -133,6 +136,29 @@ cmp.setup.cmdline(':', {
 -- require('lspconfig')['html'].setup {
 --   capabilities = capabilities
 -- }
--- require('lspconfig')['bashls'].setup {
+-- require('lspconfig')['cssls'].setup {
 --   capabilities = capabilities
 -- }
+
+
+-- local lsp_config = require("lspconfig")
+-- local lsp_completion = require("completion")
+--
+-- --Enable completion
+-- local capabilities = vim.lsp.protocol.make_client_capabilities()
+-- capabilities.textDocument.completion.completionItem.snippetSupport = true
+--
+-- local general_on_attach = function(client, bufnr)
+--   if client.resolved_capabilities.completion then
+--     lsp_completion.on_attach(client, bufnr)
+--   end
+-- end
+--
+-- -- Setup basic lsp servers
+-- for _, server in pairs({"html", "cssls"}) do
+--   lsp_config[server].setup {
+--     -- Add capabilities
+--     capabilities = capabilities,
+--     on_attach = general_on_attach
+--   }
+-- end

@@ -1,7 +1,6 @@
 return require('packer').startup(function()
 	-- packer can manage itself
 	use 'wbthomason/packer.nvim'
-
 	-- the file picker (Nvim-tree)
 	use {
 		'kyazdani42/nvim-tree.lua',
@@ -31,7 +30,7 @@ return require('packer').startup(function()
 		requires = { 'kyazdani42/nvim-web-devicons', opt = true }
 	}
 
-	use { 'CRAG666/code_runner.nvim', requires = 'nvim-lua/plenary.nvim' }
+	-- use { 'CRAG666/code_runner.nvim', requires = 'nvim-lua/plenary.nvim' }
 
 	-- use {
 	--   'romgrk/barbar.nvim',
@@ -58,7 +57,7 @@ return require('packer').startup(function()
 		run = ':TSUpdate'
 	}
 
-	use 'echasnovski/mini.nvim'
+	-- use 'echasnovski/mini.nvim'
 	use {
 		'nmac427/guess-indent.nvim',
 		config = function() require('guess-indent').setup {} end,
@@ -70,7 +69,8 @@ return require('packer').startup(function()
 		'numToStr/Comment.nvim',
 		config = function()
 			require('Comment').setup()
-		end
+		end,
+		event = "VimEnter",
 	}
 
 	-- using packer.nvim
@@ -90,20 +90,33 @@ return require('packer').startup(function()
 
 	use {
 		"hrsh7th/nvim-cmp",
+		event = "InsertEnter",
 		requires = {
-			"hrsh7th/cmp-buffer", "hrsh7th/cmp-nvim-lsp",
-			'saadparwaiz1/cmp_luasnip', 'hrsh7th/cmp-nvim-lua',
-			'octaltree/cmp-look', 'hrsh7th/cmp-path', 'hrsh7th/cmp-calc',
-			'f3fora/cmp-spell', 'hrsh7th/cmp-emoji', 'hrsh7th/cmp-cmdline', 'hrsh7th/nvim-cmp', 'L3MON4D3/LuaSnip',
-			'onsails/lspkind.nvim',
-		}
+			'L3MON4D3/LuaSnip',
+		},
+		config = function()
+			require "plugins.configs.cmp"
+		end,
 	}
 
-	use "rafamadriz/friendly-snippets"
+	use { "hrsh7th/cmp-path", after = "nvim-cmp" }
+	use { "hrsh7th/cmp-buffer", after = "nvim-cmp" }
+	use { "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" }
+	use { 'saadparwaiz1/cmp_luasnip', after = "nvim-cmp" }
+	use { 'octaltree/cmp-look', after = "nvim-cmp" }
+	use { 'hrsh7th/cmp-calc', after = "nvim-cmp" }
+	use { 'f3fora/cmp-spell', after = "nvim-cmp" }
+	use { 'hrsh7th/cmp-emoji', after = "nvim-cmp" }
+	use { 'onsails/lspkind.nvim' }
+	use { 'hrsh7th/cmp-cmdline', after = "nvim-cmp" }
+
+	use { "rafamadriz/friendly-snippets",
+		event = "InsertCharPre" }
 
 	use {
 		"windwp/nvim-autopairs",
-		config = function() require("nvim-autopairs").setup {} end
+		config = function() require("nvim-autopairs").setup {} end,
+		-- after = "InsertEnter",
 	}
 
 	use { 'mhartington/formatter.nvim' }
@@ -154,7 +167,7 @@ return require('packer').startup(function()
 		'lewis6991/gitsigns.nvim',
 		-- tag = 'release' -- To use the latest release (do not use this if you run Neovim nightly or dev builds!)
 	}
-	use 'lervag/vimtex'
+	use { 'lervag/vimtex' }
 
 	-- Packer
 	use({
@@ -169,14 +182,24 @@ return require('packer').startup(function()
 			--   `nvim-notify` is only needed, if you want to use the notification view.
 			--   If not available, we use `mini` as the fallback
 			"rcarriga/nvim-notify",
-		}
+		},
+		-- event = "VimEnter"
 	})
 
 	use {
 		"narutoxy/silicon.lua",
 		requires = { "nvim-lua/plenary.nvim" },
-		config = function()
-			require('silicon').setup({})
-		end
+		-- config = function()
+		-- 	-- require('silicon').setup({
+		-- 	-- 	bgColor = "#fff",
+		-- 	-- })
+		-- end
 	}
+
+	use({
+		"iamcco/markdown-preview.nvim",
+		run = function() vim.fn["mkdp#util#install"]() end,
+	})
+
+	use 'dstein64/vim-startuptime'
 end)

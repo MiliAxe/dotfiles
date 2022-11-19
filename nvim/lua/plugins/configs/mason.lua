@@ -22,6 +22,9 @@ if not status_ok then
   return
 end
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 mason_lspconfig.setup_handlers {
 
     -- This is a default handler that will be called for each installed server (also for new servers that are installed during a session)
@@ -29,6 +32,7 @@ mason_lspconfig.setup_handlers {
     lspconfig[server_name].setup {
       on_attach = on_attach,
       flags = lsp_flags,
+      capabilities = capabilities,
     }
   end,
 }

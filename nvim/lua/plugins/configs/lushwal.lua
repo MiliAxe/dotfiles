@@ -41,9 +41,9 @@
 -- vim.cmd[[colorscheme lushwal]]
 
 -- require('onedark').setup {
-    -- style = 'darker'
+--     style = 'darker'
 -- }
 -- require('onedark').load()
 local pywal = require('pywal')
---
+
 pywal.setup()
