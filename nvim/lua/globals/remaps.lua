@@ -27,8 +27,8 @@ vim.api.nvim_set_keymap('n', 'gs', '<CMD>BufferLineSortByDirectory<CR>',
 	{ noremap = true, silent = true, desc = "Sort buffer by directory" })
 
 -- formating
-vim.api.nvim_set_keymap('n', '<leader>f', '<CMD>lua vim.lsp.buf.format()<CR>',
-	{ noremap = true, silent = true, desc = "Format the current buffer" })
+-- vim.api.nvim_set_keymap('n', '<leader>f', '<CMD>lua vim.lsp.buf.format()<CR>',
+-- 	{ noremap = true, silent = true, desc = "Format the current buffer" })
 
 local wk = require("which-key")
 
@@ -43,5 +43,6 @@ wk.register({
 		r = { name = "+RunCode" },
 		q = { "<cmd>quit<cr>", "Exit current buffer" },
 		e = { "<cmd>NvimTreeToggle<cr>", "Toggle explorer" },
+		f = { "<cmd>Format<cr>", "Format the current buffer"},
 	},
 })

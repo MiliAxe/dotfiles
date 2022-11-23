@@ -119,7 +119,10 @@ return require('packer').startup(function()
 		-- after = "InsertEnter",
 	}
 
-	use { 'mhartington/formatter.nvim' }
+	use { 'mhartington/formatter.nvim',
+		config = function()
+			require('plugins.configs.formatter')
+		end }
 
 	-- use({
 	-- 	"jose-elias-alvarez/null-ls.nvim",
@@ -170,21 +173,24 @@ return require('packer').startup(function()
 	use { 'lervag/vimtex' }
 
 	-- Packer
-	use({
-		"folke/noice.nvim",
-		config = function()
-			require("noice").setup()
-		end,
-		requires = {
-			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-			"MunifTanjim/nui.nvim",
-			-- OPTIONAL:
-			--   `nvim-notify` is only needed, if you want to use the notification view.
-			--   If not available, we use `mini` as the fallback
-			"rcarriga/nvim-notify",
-		},
-		-- event = "VimEnter"
-	})
+	-- use({
+	-- 	"folke/noice.nvim",
+	-- 	config = function()
+	-- 		require("noice").setup()
+	-- 	end,
+	-- 	requires = {
+	-- 		-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+	-- 		"MunifTanjim/nui.nvim",
+	-- 		-- OPTIONAL:
+	-- 		--   `nvim-notify` is only needed, if you want to use the notification view.
+	-- 		--   If not available, we use `mini` as the fallback
+	-- 		"rcarriga/nvim-notify",
+	-- 	},
+	-- 	-- event = "VimEnter"
+	-- })
+	--
+	use { "rcarriga/nvim-notify",
+	}
 
 	use {
 		"narutoxy/silicon.lua",
@@ -202,4 +208,9 @@ return require('packer').startup(function()
 	})
 
 	use 'dstein64/vim-startuptime'
+
+	use {
+		'glacambre/firenvim',
+		run = function() vim.fn['firenvim#install'](0) end
+	}
 end)
