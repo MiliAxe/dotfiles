@@ -215,11 +215,11 @@ return require('packer').startup(function()
 	}
 
 	use {
-		"SmiteshP/nvim-navic",
-		requires = "neovim/nvim-lspconfig"
-	}
-
-	use {
 		"lambdalisue/suda.vim"
 	}
+
+	use { 'fgheng/winbar.nvim',
+		requires = 'SmiteshP/nvim-navic' }
+
+
 end)

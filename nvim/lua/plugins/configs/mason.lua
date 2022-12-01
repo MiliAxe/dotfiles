@@ -13,7 +13,7 @@ if not status_ok then
 end
 
 mason_lspconfig.setup {
-	automatic_installation = true
+  automatic_installation = true
 }
 
 local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
@@ -28,16 +28,15 @@ local navic = require("nvim-navic")
 
 mason_lspconfig.setup_handlers {
 
-    -- This is a default handler that will be called for each installed server (also for new servers that are installed during a session)
-  function (server_name)
+  -- This is a default handler that will be called for each installed server (also for new servers that are installed during a session)
+  function(server_name)
     lspconfig[server_name].setup {
       on_attach = function(client, bufnr)
         navic.attach(client, bufnr)
-      end,
+      end
+      ,
       flags = lsp_flags,
       capabilities = capabilities,
     }
   end,
 }
-
-vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"

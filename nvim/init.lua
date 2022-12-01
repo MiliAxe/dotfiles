@@ -3,6 +3,7 @@ require('globals.remaps')
 
 -- Load plugin configs
 require('plugins.configs.pywal')
+require('plugins.configs.winbar')
 require('plugins.configs.lualine')
 require('plugins.configs.bufferline')
 -- require('plugins.configs.cmp')
