@@ -44,5 +44,6 @@ wk.register({
 		q = { "<cmd>quit<cr>", "Exit current buffer" },
 		e = { "<cmd>NvimTreeToggle<cr>", "Toggle explorer" },
 		f = { "<cmd>Format<cr>", "Format the current buffer"},
+		s = { function() require('silicon').visualise_cmdline({ to_clip = true }) end, "Snap to clipboard"}
 	},
 })

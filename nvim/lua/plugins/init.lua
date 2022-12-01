@@ -213,4 +213,13 @@ return require('packer').startup(function()
 		'glacambre/firenvim',
 		run = function() vim.fn['firenvim#install'](0) end
 	}
+
+	use {
+		"SmiteshP/nvim-navic",
+		requires = "neovim/nvim-lspconfig"
+	}
+
+	use {
+		"lambdalisue/suda.vim"
+	}
 end)
