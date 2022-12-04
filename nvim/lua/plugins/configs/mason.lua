@@ -4,7 +4,11 @@ if not status_ok then
   return
 end
 
-mason.setup()
+mason.setup({
+  ui = {
+    border = "single"
+  }
+})
 
 local status_ok, mason_lspconfig = pcall(require, "mason-lspconfig")
 if not status_ok then
@@ -27,7 +31,6 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 local navic = require("nvim-navic")
 
 mason_lspconfig.setup_handlers {
-
   -- This is a default handler that will be called for each installed server (also for new servers that are installed during a session)
   function(server_name)
     lspconfig[server_name].setup {
@@ -40,3 +43,5 @@ mason_lspconfig.setup_handlers {
     }
   end,
 }
+
+

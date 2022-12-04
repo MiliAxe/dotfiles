@@ -8,10 +8,19 @@ vim.wo.number = true
 vim.opt.confirm = true
 
 -- Show relative numbers
-vim.o.relativenumber = true
+vim.opt.relativenumber = true
+
+-- Make the relative number on cursorline accept highlights
+vim.opt.cursorline = true
+
+-- Scroll earlier
+vim.opt.scrolloff = 5
 
 -- Don't show mode information
 vim.opt.showmode = false
 
 -- Format on save
 vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
+
+-- GuessIndent on save
+vim.cmd [[autocmd BufWritePre <buffer> GuessIndent]]

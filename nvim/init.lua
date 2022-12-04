@@ -1,30 +1,13 @@
+-- Load the essentials
 require('globals.globals')
 require('globals.remaps')
+require('globals.highlights')
 
--- Load plugin configs
+-- Speed up nvim startup time
+require('impatient')
+
+-- Load Pywal colors
 require('plugins.configs.pywal')
-require('plugins.configs.winbar')
-require('plugins.configs.lualine')
-require('plugins.configs.bufferline')
--- require('plugins.configs.cmp')
--- require('plugins.configs.coderunner')
-require('plugins.configs.colorizer')
--- require('plugins.configs.comment')
-require('plugins.configs.guess-indent')
-require('plugins.configs.indent-blankline')
-require('plugins.configs.lspconfig')
-require('plugins.configs.luasnip')
--- require('plugins.configs.mini')
-require('plugins.configs.null-ls')
-require('plugins.configs.nvim-tree')
-require('plugins.configs.presence')
-require('plugins.configs.toggleterm')
-require('plugins.configs.treesitter')
-require('plugins.configs.telescope')
-require('plugins.configs.mason')
--- require('plugins.configs.feline')
-require('plugins.configs.vimtex')
-require('plugins.configs.silicon')
 
 -- Load the packer plugins
 require('plugins')
