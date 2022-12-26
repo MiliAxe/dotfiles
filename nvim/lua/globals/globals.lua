@@ -19,6 +19,18 @@ vim.opt.scrolloff = 5
 -- Don't show mode information
 vim.opt.showmode = false
 
+vim.g.neovide_padding_top=35
+vim.g.neovide_padding_left=28
+vim.g.neovide_padding_right=28
+vim.g.neovide_padding_bottom=10
+
+-- LATEX GLOBALS --
+vim.g.tex_flavor = 'latex'
+vim.g.vimtex_view_method = 'zathura'
+vim.g.vimtex_quickfix_mode = 0
+vim.opt.conceallevel = 1
+vim.g.tex_conceal = 'abdmg'
+
 -- Format on save
 vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
 

@@ -29,6 +29,11 @@ vim.api.nvim_set_keymap('n', 'gs', '<CMD>BufferLineSortByDirectory<CR>',
 -- formating
 -- vim.api.nvim_set_keymap('n', '<leader>f', '<CMD>lua vim.lsp.buf.format()<CR>',
 -- 	{ noremap = true, silent = true, desc = "Format the current buffer" })
+--
+vim.api.nvim_set_keymap("i", "<C-k>", "<Plug>luasnip-next-choice", {})
+vim.api.nvim_set_keymap("s", "<C-n>", "<Plug>luasnip-next-choice", {})
+vim.api.nvim_set_keymap("i", "<C-p>", "<Plug>luasnip-prev-choice", {})
+vim.api.nvim_set_keymap("s", "<C-p>", "<Plug>luasnip-prev-choice", {})
 
 local wk = require("which-key")
 
@@ -43,7 +48,7 @@ wk.register({
 		r = { name = "+RunCode" },
 		q = { "<cmd>quit<cr>", "Exit current buffer" },
 		e = { "<cmd>NvimTreeToggle<cr>", "Toggle explorer" },
-		f = { "<cmd>Format<cr>", "Format the current buffer"},
-		s = { function() require('silicon').visualise_cmdline({ to_clip = true }) end, "Snap to clipboard"}
+		f = { "<cmd>Format<cr>", "Format the current buffer" },
+		s = { function() require('silicon').visualise_cmdline({ to_clip = true }) end, "Snap to clipboard" }
 	},
 })

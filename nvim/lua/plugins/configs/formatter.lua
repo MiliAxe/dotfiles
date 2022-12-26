@@ -21,6 +21,10 @@ require("formatter").setup {
       require("formatter.filetypes.python").autopep8,
     },
 
+    cs = {
+      require("formatter.filetypes.cs").clangformat,
+    },
+
     -- Use the special "*" filetype for defining formatter configurations on
     -- any filetype
     ["*"] = {

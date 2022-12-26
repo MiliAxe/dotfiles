@@ -78,7 +78,7 @@ return require("packer").startup(function()
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
-		event = "BufRead",
+		-- event = "BufRead",
 		config = 'require("plugins.configs.treesitter")'
 	})
 
@@ -119,16 +119,18 @@ return require("packer").startup(function()
 	use({
 		"hrsh7th/nvim-cmp",
 		-- event = "InsertEnter",
-		requires = {
-			"L3MON4D3/LuaSnip",
-		},
 		config = 'require("plugins.configs.cmp")',
 	})
+
+	use {
+		'L3MON4D3/LuaSnip',
+		config = 'require("plugins.configs.luasnip")'
+	}
 
 	use({ "hrsh7th/cmp-path", after = "nvim-cmp" })
 	use({ "hrsh7th/cmp-buffer", after = "nvim-cmp" })
 	use({ "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" })
-	use({ "saadparwaiz1/cmp_luasnip", after = "nvim-cmp", config = 'require("plugins.configs.luasnip")' })
+	use({ "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" })
 	use({ "octaltree/cmp-look", after = "nvim-cmp" })
 	use({ "hrsh7th/cmp-calc", after = "nvim-cmp" })
 	use({ "f3fora/cmp-spell", after = "nvim-cmp" })
@@ -136,7 +138,7 @@ return require("packer").startup(function()
 	use({ "onsails/lspkind.nvim" })
 	use({ "hrsh7th/cmp-cmdline", after = "nvim-cmp" })
 
-	use({ "rafamadriz/friendly-snippets", event = "InsertCharPre" })
+	use({ "rafamadriz/friendly-snippets" })
 
 	use({
 		"windwp/nvim-autopairs",
@@ -178,6 +180,8 @@ return require("packer").startup(function()
 	})
 
 	use("williamboman/mason-lspconfig.nvim")
+
+	use("jayp0521/mason-nvim-dap.nvim")
 
 	use("navarasu/onedark.nvim")
 
@@ -227,4 +231,21 @@ return require("packer").startup(function()
 	use({ "fgheng/winbar.nvim", requires = "SmiteshP/nvim-navic", config = 'require("plugins.configs.winbar")' })
 
 	use({ "sunjon/shade.nvim", event = "BufRead", config = 'require("plugins.configs.shade")' })
+
+	use({
+		"rktjmp/fwatch.nvim",
+		config = 'require("plugins.configs.fwatch")',
+	})
+
+	use({
+		"mfussenegger/nvim-dap",
+
+		requires = {
+			"rcarriga/nvim-dap-ui",
+			"Pocco81/DAPInstall.nvim"
+		},
+
+		config = 'require("plugins.configs.dap")'
+	})
+
 end)
