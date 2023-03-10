@@ -22,7 +22,8 @@
 
 if [[ $(cat ~/.config/polybar/scripts/traystatus) == "on" ]]
 then
-  xdo hide -n stalonetray
+  # xdo hide -n stalonetray
+  pkill stalonetray
   polybar-msg action systray hook 1
   echo "off" > ~/.config/polybar/scripts/traystatus
   exit 0
@@ -35,6 +36,7 @@ then
 elif [[ $(cat ~/.config/polybar/scripts/traystatus) == "off" ]]
 then
   xdo show -n stalonetray
+  xdo raise -n stalonetray
   polybar-msg action systray hook 0
   echo "on" > ~/.config/polybar/scripts/traystatus
 fi

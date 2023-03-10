@@ -1,1 +1,1 @@
-rofi -modi drun,run,filebrowser,calc,emoji,"clipboard:greenclip print" -show drun
+rofi -modi drun,run,filebrowser,emoji -show drun
