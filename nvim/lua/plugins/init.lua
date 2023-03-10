@@ -69,7 +69,7 @@ return require("packer").startup(function()
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.0",
 		requires = { { "nvim-lua/plenary.nvim" } },
-		config = 'require("plugins.configs.telescope")'
+		config = 'require("plugins.configs.telescope")',
 	})
 
 	use({ "nvim-telescope/telescope-file-browser.nvim" })
@@ -79,7 +79,7 @@ return require("packer").startup(function()
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
 		-- event = "BufRead",
-		config = 'require("plugins.configs.treesitter")'
+		config = 'require("plugins.configs.treesitter")',
 	})
 
 	-- use 'echasnovski/mini.nvim'
@@ -101,8 +101,12 @@ return require("packer").startup(function()
 	})
 
 	-- using packer.nvim
-	use({ "akinsho/bufferline.nvim", tag = "v2.*", requires = "kyazdani42/nvim-web-devicons",
-		config = "require('plugins.configs.bufferline')" })
+	use({
+		"akinsho/bufferline.nvim",
+		tag = "v2.*",
+		requires = "kyazdani42/nvim-web-devicons",
+		config = "require('plugins.configs.bufferline')",
+	})
 
 	use({ "lukas-reineke/indent-blankline.nvim", config = 'require("plugins.configs.indent-blankline")' })
 
@@ -122,10 +126,10 @@ return require("packer").startup(function()
 		config = 'require("plugins.configs.cmp")',
 	})
 
-	use {
-		'L3MON4D3/LuaSnip',
-		config = 'require("plugins.configs.luasnip")'
-	}
+	use({
+		"L3MON4D3/LuaSnip",
+		config = 'require("plugins.configs.luasnip")',
+	})
 
 	use({ "hrsh7th/cmp-path", after = "nvim-cmp" })
 	use({ "hrsh7th/cmp-buffer", after = "nvim-cmp" })
@@ -212,7 +216,7 @@ return require("packer").startup(function()
 	use({
 		"narutoxy/silicon.lua",
 		requires = { "nvim-lua/plenary.nvim" },
-		config = 'require("plugins.configs.silicon")'
+		config = 'require("plugins.configs.silicon")',
 	})
 
 	use({
@@ -239,13 +243,34 @@ return require("packer").startup(function()
 
 	use({
 		"mfussenegger/nvim-dap",
-
 		requires = {
 			"rcarriga/nvim-dap-ui",
-			"Pocco81/DAPInstall.nvim"
+			"Pocco81/DAPInstall.nvim",
 		},
-
-		config = 'require("plugins.configs.dap")'
+		config = 'require("plugins.configs.dap")',
 	})
 
+	use({
+		"weilbith/nvim-code-action-menu",
+		cmd = "CodeActionMenu",
+	})
+
+	use({
+		"max397574/better-escape.nvim",
+		config = function()
+			require("better_escape").setup()
+		end,
+	})
+
+	use({
+		"RRethy/vim-illuminate",
+		config = 'require("plugins.configs.illuminate")',
+	})
+
+	use({
+		"phaazon/hop.nvim",
+		event = "BufRead",
+			-- you can configure Hop the way you like here; see :h hop-config
+		config = 'require("plugins.configs.hop")',
+	})
 end)

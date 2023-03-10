@@ -19,10 +19,10 @@ vim.opt.scrolloff = 5
 -- Don't show mode information
 vim.opt.showmode = false
 
-vim.g.neovide_padding_top=35
-vim.g.neovide_padding_left=28
-vim.g.neovide_padding_right=28
-vim.g.neovide_padding_bottom=10
+vim.g.neovide_padding_top = 35
+vim.g.neovide_padding_left = 28
+vim.g.neovide_padding_right = 28
+vim.g.neovide_padding_bottom = 10
 
 -- LATEX GLOBALS --
 vim.g.tex_flavor = 'latex'
@@ -36,3 +36,12 @@ vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
 
 -- GuessIndent on save
 vim.cmd [[autocmd BufWritePre <buffer> GuessIndent]]
+
+-- vim.cmd [[autocmd InsertLeave <buffer> lua vim.lsp.codelens.refresh()]]
+
+-- vim.api.nvim_create_autocmd({ "InsertLeave" }, {
+-- 	pattern = { "*.c" },
+-- 	callback = function()
+-- 		vim.lsp.codelens.refresh()
+-- 	end
+-- })

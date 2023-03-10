@@ -21,7 +21,7 @@ local cmp = require("cmp")
 
 cmp.setup {
   mapping = cmp.mapping.preset.insert({
-    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-b>'] = cmp.mapping.scroll_docs( -4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.abort(),
@@ -41,7 +41,7 @@ cmp.setup {
       , { "i", "s" }),
 
     ["<C-;>"] = cmp.mapping(function()
-      luasnip.jump(-1)
+      luasnip.jump( -1)
     end
       , { "i", "s" }),
 
@@ -56,11 +56,11 @@ cmp.setup {
     { name = "nvim_lsp" },
     { name = "path" },
     { name = "luasnip" },
-    { name = "buffer", keyword_length = 5 },
-    { name = "spell", keyword_length = 8 },
+    { name = "buffer",  keyword_length = 5 },
+    { name = "spell",   keyword_length = 8 },
     { name = "emoji" },
     -- { name = "cmdline", keyword_length = 5 },
-    { name = "look", keyword_length = 5 },
+    { name = "look",    keyword_length = 5 },
   },
 
   snippet = {
@@ -87,7 +87,8 @@ cmp.setup {
         look = "Look",
         spell = "Spell",
         cmdline = "CMD",
-      }
+      },
+      maxwidth = 40,
     },
   },
 
@@ -126,7 +127,7 @@ cmp.setup.cmdline(':', {
 })
 
 local lspconfig = require('lspconfig')
-lspconfig.sumneko_lua.setup({
+lspconfig.lua_ls.setup({
   settings = {
     Lua = {
       diagnostics = {
