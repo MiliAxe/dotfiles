@@ -19,6 +19,8 @@ vim.opt.scrolloff = 5
 -- Don't show mode information
 vim.opt.showmode = false
 
+vim.o.guifont = "JetBrains Mono:h10"
+
 vim.g.neovide_padding_top = 35
 vim.g.neovide_padding_left = 28
 vim.g.neovide_padding_right = 28
@@ -32,16 +34,16 @@ vim.opt.conceallevel = 1
 vim.g.tex_conceal = 'abdmg'
 
 -- Format on save
-vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
+vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format({async = true})]]
 
 -- GuessIndent on save
-vim.cmd [[autocmd BufWritePre <buffer> GuessIndent]]
+-- vim.cmd [[autocmd BufWritePre <buffer> GuessIndent]]
 
 -- vim.cmd [[autocmd InsertLeave <buffer> lua vim.lsp.codelens.refresh()]]
 
--- vim.api.nvim_create_autocmd({ "InsertLeave" }, {
--- 	pattern = { "*.c" },
--- 	callback = function()
--- 		vim.lsp.codelens.refresh()
--- 	end
--- })
+vim.api.nvim_create_autocmd({ "InsertLeave" }, {
+	pattern = { "*.cs" },
+	callback = function()
+		vim.lsp.codelens.refresh()
+	end
+})

@@ -44,6 +44,20 @@ local dap = require("dap")
 local ui = require("dapui")
 
 wk.register({
+	["g"] = {
+		d = {
+			function()
+				vim.lsp.buf.definition()
+			end,
+			"Go to definition",
+		},
+	},
+	K = {
+		function()
+			vim.lsp.buf.hover()
+		end,
+		"Hover definition",
+	},
 	["<leader>"] = {
 		l = {
 			name = "LSP",
@@ -67,27 +81,27 @@ wk.register({
 					vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-w>=", false, true, true), "n", false)
 					require("notify")("Debugger session ended", "warn")
 				end,
-				"End session"
+				"End session",
 			},
 			c = {
 				function()
 					dap.continue()
 				end,
-				"Continue"
+				"Continue",
 			},
 			b = {
 				function()
 					dap.toggle_breakpoint()
 				end,
-				"Toggle breakpoint"
+				"Toggle breakpoint",
 			},
 			C = {
 				function()
 					dap.clear_breakpoints()
 					require("notify")("Breakpoints cleared", "warn")
 				end,
-				"Clear breakpoints"
-			}
+				"Clear breakpoints",
+			},
 		},
 		w = { "<cmd>write<cr>", "Write current buffer" },
 		t = {

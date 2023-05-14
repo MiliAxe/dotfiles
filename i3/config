@@ -211,7 +211,7 @@ gaps inner 5
 
 #picom
 # exec_always --no-startup-id "picom --animation-for-open-window zoom --animation-stiffness 150"
-exec_always --no-startup-id "picom --experimental-backends"
+# exec_always --no-startup-id "picom --experimental-backends"
 bindsym $mod+p exec --no-startup-id ~/.config/polybar/scripts/picomtoggle.sh
 bindsym $mod+o exec --no-startup-id ~/.config/polybar/scripts/systray.sh
 

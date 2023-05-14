@@ -1,14 +1,16 @@
--- Load the essentials
-require('globals.globals')
-require('globals.remaps')
-require('globals.highlights')
+
+
+-- Load the plugins
+require('plugins')
 
 -- Speed up nvim startup time
 require('impatient')
 
--- Load Pywal colors
-require('plugins.configs.pywal')
 require('plugins.configs.luasnip')
 
--- Load the packer plugins
-require('plugins')
+-- Load Pywal colors
+require('plugins.configs.pywal')
+
+-- Load the essentials
+require('globals.globals')
+require('globals.remaps')

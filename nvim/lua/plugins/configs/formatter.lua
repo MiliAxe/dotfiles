@@ -12,26 +12,27 @@ require("formatter").setup {
     lua = {
       require("formatter.filetypes.lua").stylua,
     },
-
     cpp = {
       require("formatter.filetypes.cpp").clangformat,
     },
-
     python = {
       require("formatter.filetypes.python").autopep8,
     },
-
     cs = {
       require("formatter.filetypes.cs").clangformat,
     },
-
+    json = {
+      require("formatter.filetypes.json").prettier,
+    },
+    html = {
+      require("formatter.filetypes.html").prettier,
+    },
     -- Use the special "*" filetype for defining formatter configurations on
     -- any filetype
     ["*"] = {
       -- "formatter.filetypes.any" defines default configurations for any
       -- filetype
       require("formatter.filetypes.any").remove_trailing_whitespace,
-      -- require("formatter.defaults.prettier"),
     }
   }
 }

@@ -2,11 +2,11 @@ vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
 -- vim.lsp.set_log_level("debug")
 vim.opt.spell = false
-vim.opt.spelllang = { 'en_us' }
+vim.opt.spelllang = { "en_us" }
 
-local lspkind = require('lspkind')
+local lspkind = require("lspkind")
 
-local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -19,123 +19,127 @@ end
 local luasnip = require("luasnip")
 local cmp = require("cmp")
 
-cmp.setup {
+cmp.setup({
   mapping = cmp.mapping.preset.insert({
-    ['<C-b>'] = cmp.mapping.scroll_docs( -4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.abort(),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+    ["<C-f>"] = cmp.mapping.scroll_docs(4),
+    ["<C-Space>"] = cmp.mapping.complete(),
+    ["<C-e>"] = cmp.mapping.abort(),
+    ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     ["<c-y>"] = cmp.mapping(
-      cmp.mapping.confirm {
+      cmp.mapping.confirm({
         behavior = cmp.ConfirmBehavior.Insert,
         select = true,
-      },
+      }),
       { "i", "c" }
     ),
-    ["<C-n>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
-    ["<C-p>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
+    ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+    ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
     ["<C-'>"] = cmp.mapping(function()
       luasnip.jump(1)
-    end
-      , { "i", "s" }),
-
+    end, { "i", "s" }),
     ["<C-;>"] = cmp.mapping(function()
-      luasnip.jump( -1)
-    end
-      , { "i", "s" }),
-
+      luasnip.jump(-1)
+    end, { "i", "s" }),
     ["<C-h>"] = cmp.mapping(function()
       luasnip.change_choice(1)
-    end
-      , { "i", "s" }),
+    end, { "i", "s" }),
   }),
-
   sources = {
+    { name = "luasnip" },
     { name = "nvim_lua" },
     { name = "nvim_lsp" },
     { name = "path" },
-    { name = "luasnip" },
-    { name = "buffer",  keyword_length = 5 },
-    { name = "spell",   keyword_length = 8 },
+    -- { name = "buffer",  keyword_length = 5 },
+    -- { name = "spell",   keyword_length = 8 },
     { name = "emoji" },
+    { name = "calc" },
     -- { name = "cmdline", keyword_length = 5 },
     { name = "look",    keyword_length = 5 },
   },
-
   snippet = {
     -- REQUIRED - you must specify a snippet engine
     expand = function(args)
-      require('luasnip').lsp_expand(args.body)
+      require("luasnip").lsp_expand(args.body)
     end,
   },
-
   window = {
     completion = cmp.config.window.bordered(),
     documentation = cmp.config.window.bordered(),
   },
-
   formatting = {
-    format = lspkind.cmp_format {
-      with_text = false,
-      menu = {
-        nvim_lua = "API",
-        buffer = "Buf",
-        nvim_lsp = "LSP",
-        path = "Path",
-        luasnip = "Snip",
-        look = "Look",
-        spell = "Spell",
-        cmdline = "CMD",
-      },
-      maxwidth = 40,
-    },
-  },
+    -- format = lspkind.cmp_format {
+    --   with_text = true,
+    --   menu = {
+    --     nvim_lua = "API",
+    --     buffer = "Buf",
+    --     nvim_lsp = "LSP",
+    --     path = "Path",
+    --     luasnip = "Snip",
+    --     look = "Look",
+    --     spell = "Spell",
+    --     cmdline = "CMD",
+    --   },
+    --   maxwidth = 40,
+    -- },
+    -- formatting = {
+    fields = { "kind", "abbr", "menu" },
+    format = function(entry, vim_item)
+      local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
+      local strings = vim.split(kind.kind, "%s", { trimempty = true })
+      kind.kind = " " .. (strings[1] or "") .. " "
+      kind.menu = "    (" .. (strings[2] or "") .. ")"
 
+      return kind
+    end,
+  },
   experimental = {
-    ghost_text = true,
+    ghost_text = {},
     -- native_menu = true,
   },
   view = {
-    entries = "custom"
+    entries = "custom",
   },
+  completion = {
+    completeopt = "menu,menuone,noinsert",
+  },
+})
 
-  preselect = cmp.PreselectMode.None
-}
-
-cmp.event:on(
-  'confirm_done',
-  cmp_autopairs.on_confirm_done()
-)
-
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
 -- `/` cmdline setup.
-cmp.setup.cmdline('/', {
+cmp.setup.cmdline("/", {
   mapping = cmp.mapping.preset.cmdline(),
   sources = {
-    { name = 'buffer' }
-  }
+    { name = "buffer" },
+  },
 })
 -- `:` cmdline setup.
-cmp.setup.cmdline(':', {
+cmp.setup.cmdline(":", {
   mapping = cmp.mapping.preset.cmdline(),
   sources = cmp.config.sources({
-    { name = 'path' }
+    { name = "path" },
   }, {
-    { name = 'cmdline' }
-  })
+    { name = "cmdline" },
+  }),
 })
 
-local lspconfig = require('lspconfig')
-lspconfig.lua_ls.setup({
-  settings = {
-    Lua = {
-      diagnostics = {
-        globals = { 'vim', 'use' }
-      }
-    }
-  }
-})
+-- local lspconfig = require("lspconfig")
+-- lspconfig.lua_ls.setup({
+--   cmd = {
+--     "/usr/bin/lua-language-server",
+--     "-E",
+--     "/usr/share/lua-language-server/main.lua",
+--   },
+--   settings = {
+--     Lua = {
+--       diagnostics = {
+--         globals = { "vim", "use" },
+--       },
+--     },
+--   },
+-- })
+
 
 -- Setup lspconfig.
 -- local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -151,7 +155,6 @@ lspconfig.lua_ls.setup({
 -- require('lspconfig')['cssls'].setup {
 --   capabilities = capabilities
 -- }
-
 
 -- local lsp_config = require("lspconfig")
 -- local lsp_completion = require("completion")
