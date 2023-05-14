@@ -1,0 +1,32 @@
+{
+    "workspace.library": [
+        "/home/mili/.config/nvim",
+        "/home/mili/.local/share/nvim/lazy/lazy.nvim",
+        "/home/mili/.local/share/nvim/lazy/nvim-navic",
+        "/home/mili/.local/share/nvim/lazy/nvim-lspconfig",
+        "/home/mili/.local/share/nvim/lazy/mason-nvim-dap.nvim",
+        "/home/mili/.local/share/nvim/lazy/mason.nvim",
+        "/home/mili/.local/share/nvim/lazy/mason-lspconfig.nvim",
+        "/home/mili/.local/share/nvim/lazy/nvim-surround",
+        "/home/mili/.local/share/nvim/lazy/nvim-web-devicons",
+        "/home/mili/.local/share/nvim/lazy/vim-startuptime",
+        "/home/mili/.local/share/nvim/lazy/impatient.nvim",
+        "/home/mili/.local/share/nvim/lazy/plenary.nvim",
+        "/home/mili/.local/share/nvim/lazy/startup.nvim",
+        "/home/mili/.local/share/nvim/lazy/lsp-colors.nvim",
+        "/home/mili/.local/share/nvim/lazy/bufferline.nvim",
+        "/home/mili/.local/share/nvim/lazy/presence.nvim",
+        "/home/mili/.local/share/nvim/lazy/silicon.lua",
+        "/home/mili/.local/share/nvim/lazy/gitsigns.nvim",
+        "/home/mili/.local/share/nvim/lazy/LuaSnip",
+        "/home/mili/.local/share/nvim/lazy/markdown-preview.nvim",
+        "/home/mili/.local/share/nvim/lazy/null-ls.nvim",
+        "/home/mili/.local/share/nvim/lazy/nvim-notify",
+        "/home/mili/.local/share/nvim/lazy/indent-blankline.nvim",
+        "/usr/share/nvim/runtime",
+        "/usr/lib/nvim",
+        "/home/mili/.local/state/nvim/lazy/readme",
+        "${3rd}/luassert/library",
+        "${3rd}/luv/library"
+    ]
+}
