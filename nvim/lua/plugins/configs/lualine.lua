@@ -69,6 +69,9 @@ vim.api.nvim_set_hl(0, "NavicIconsTypeParameter", { default = true, bg = "#00000
 vim.api.nvim_set_hl(0, "NavicText", { default = true, bg = "#000000", fg = "#ffffff" })
 vim.api.nvim_set_hl(0, "NavicSeparator", { default = true, bg = "#000000", fg = "#ff3fff" })
 
+local my_filename = require('lualine.components.filename'):extend()
+my_filename.apply_icon = require('lualine.components.filetype').apply_icon
+my_filename.icon_hl_cache = {}
 
 require('lualine').setup {
   options = {
@@ -77,8 +80,8 @@ require('lualine').setup {
     component_separators = { left = '', right = '' },
     section_separators = { left = '', right = '' },
     disabled_filetypes = {
-      statusline = { 'NvimTree' },
-      winbar = {},
+      statusline = { 'alpha' },
+      winbar = { 'NvimTree', 'alpha', 'dap-repl' },
     },
     ignore_focus = {},
     always_divide_middle = true,
@@ -105,15 +108,19 @@ require('lualine').setup {
     lualine_y = {},
     lualine_z = {}
   },
-  tabline = {},
+  tabline = {
+  },
   winbar = {
-    lualine_c = {
+    lualine_c = { {
+      my_filename,
+      colored = true
+    }, {
       "navic",
       color_correction = nil,
       navic_opts = nil
-    }
+    } }
   },
-  inactive_winbar = {},
+  inactive_winbar = { lualine_a = { 'filename' } },
   extensions = {}
 }
 

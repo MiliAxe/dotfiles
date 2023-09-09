@@ -4,6 +4,8 @@ vim.g.mapleader = " "
 -- Enable line numbers
 vim.wo.number = true
 
+vim.o.showtabline = 1
+
 -- Confirm on exit
 vim.opt.confirm = true
 
@@ -19,7 +21,7 @@ vim.opt.scrolloff = 5
 -- Don't show mode information
 vim.opt.showmode = false
 
-vim.o.guifont = "JetBrains Mono:h10"
+vim.o.guifont = "JetBrainsMono Nerd Font:h10"
 
 vim.g.neovide_padding_top = 35
 vim.g.neovide_padding_left = 28

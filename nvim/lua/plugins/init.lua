@@ -29,7 +29,6 @@ require("lazy").setup({
 		config = function()
 			require("plugins.configs.nvim-tree")
 		end,
-		version = "nightly",
 		cmd = "NvimTreeToggle",
 	},
 
@@ -45,7 +44,7 @@ require("lazy").setup({
 	{ "neovim/nvim-lspconfig" },
 
 	{
-		"AlphaTechnolog/pywal.nvim",
+		"nimaaskarian/pywal16.nvim",
 		name = "pywal",
 		-- config = 'require("plugins.configs.pywal")'
 		dependencies = {
@@ -66,7 +65,7 @@ require("lazy").setup({
 		config = function()
 			require("plugins.configs.lualine")
 		end,
-		event = "BufRead"
+		event = "VimEnter"
 	},
 
 	{
@@ -153,7 +152,16 @@ require("lazy").setup({
 			{ "hrsh7th/cmp-cmdline" },
 			{ "hrsh7th/cmp-nvim-lsp" },
 
-			{ "rafamadriz/friendly-snippets" },
+			-- {
+			-- 	"rafamadriz/friendly-snippets",
+			--
+			-- 	config = function()
+			-- 		require("loaders.from_vscode").load()
+			-- 	end,
+			--
+			--
+			-- },
+			--
 
 			{
 				"windwp/nvim-autopairs",
@@ -162,22 +170,49 @@ require("lazy").setup({
 				end,
 				-- after = "InsertEnter",
 			},
+			{
+				"L3MON4D3/LuaSnip",
+
+				-- dependencies = {
+				-- 	{
+				-- 		"rafamadriz/friendly-snippets",
+				--
+				-- 		config = function()
+				-- 			require("luasnip.loaders.from_vscode").lazy_load()
+				-- 		end,
+				-- 	},
+				-- }
+			},
+			{
+				"rafamadriz/friendly-snippets",
+
+				config = function()
+					require("luasnip.loaders.from_vscode").lazy_load()
+				end,
+			},
 		}
 	},
 
-	{
-		"L3MON4D3/LuaSnip",
-		config = function()
-			require("plugins.configs.luasnip")
-		end,
-	},
+	-- {
+	-- 	"L3MON4D3/LuaSnip",
+	--
+	-- 	dependencies = {
+	-- 		{
+	-- 			"rafamadriz/friendly-snippets",
+	--
+	-- 			config = function()
+	-- 				require("luasnip.loaders.from_vscode").lazy_load()
+	-- 			end,
+	-- 		},
+	-- 	}
+	-- },
 
-	-- use({
+	-- {
 	-- 	"mhartington/formatter.nvim",
 	-- 	config = function()
 	-- 		require("plugins.configs.formatter")
 	-- 	end,
-	-- })
+	-- },
 
 	{
 		"jose-elias-alvarez/null-ls.nvim",
@@ -189,13 +224,22 @@ require("lazy").setup({
 	{ "folke/lsp-colors.nvim" },
 
 	-- use "glepnir/dashboard-nvim"
+	-- {
+	-- 	"startup-nvim/startup.nvim",
+	-- 	--requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+	-- 	config = function()
+	-- 		require("startup").setup(require("plugins.configs.startup_nvim"))
+	-- 	end,
+	-- },
+
 	{
-		"startup-nvim/startup.nvim",
-		--requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+		'goolord/alpha-nvim',
+		event = "VimEnter",
 		config = function()
-			require("startup").setup(require("plugins.configs.startup_nvim"))
-		end,
+			require("plugins.configs.alpha")
+		end
 	},
+
 
 	{
 		"williamboman/mason.nvim",
@@ -250,13 +294,13 @@ require("lazy").setup({
 		config = function()
 			require("plugins.configs.silicon")
 		end,
+		keys = { "<leader>", "s" }
+
 	},
 
 	{
 		"iamcco/markdown-preview.nvim",
-		--	run = function()
-		--		vim.fn["mkdp#util#install"]()
-		--	end,
+		config = function() vim.fn["mkdp#util#install"]() end,
 	},
 
 	{ "dstein64/vim-startuptime" },
@@ -341,7 +385,34 @@ require("lazy").setup({
 		config = function()
 			require("symbols-outline").setup()
 		end
+	},
+
+	{
+		'kevinhwang91/nvim-ufo',
+		dependencies = {
+			'kevinhwang91/promise-async',
+
+			{
+				"luukvbaal/statuscol.nvim",
+				config = function()
+					local builtin = require("statuscol.builtin")
+					require("statuscol").setup({
+						relculright = true,
+						segments = {
+							{ text = { builtin.foldfunc },      click = "v:lua.ScFa" },
+							{ text = { "%s" },                  click = "v:lua.ScSa" },
+							{ text = { builtin.lnumfunc, " " }, click = "v:lua.ScLa" },
+						},
+					})
+				end,
+			}
+
+		},
+		config = function()
+			require("plugins.configs.ufo")
+		end
 	}
+
 
 })
 

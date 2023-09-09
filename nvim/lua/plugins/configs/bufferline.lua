@@ -2,6 +2,7 @@ vim.opt.termguicolors = true
 
 require('bufferline').setup {
   options = {
+    always_show_bufferline = false,
     buffer_close_icon = '󰅖',
     modified_icon = '●',
     close_icon = '',
@@ -18,4 +19,5 @@ require('bufferline').setup {
     },
     separator_style = "thick"
   },
+  
 }

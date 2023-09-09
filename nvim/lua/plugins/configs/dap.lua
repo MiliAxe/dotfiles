@@ -1,7 +1,8 @@
-require("mason-nvim-dap").setup({
-	automatic_setup = true,
-})
+-- require("mason-nvim-dap").setup({
+-- 	automatic_setup = true,
+-- })
 -- require 'mason-nvim-dap'.setup_handlers()
+
 local dap = require('dap')
 dap.adapters.cppdbg = {
 	id = 'cppdbg',
@@ -18,27 +19,16 @@ dap.configurations.cpp = {
 		end,
 		cwd = '${workspaceFolder}',
 		stopAtEntry = true,
+		externalConsole = true
 	}
 }
 dap.configurations.c = dap.configurations.cpp
 
-
-dap.adapters.coreclr = {
-	type = 'executable',
-	command = '/home/mili/.local/share/nvim/mason/bin/netcoredbg',
-	args = { '--interpreter=vscode' }
+dap.defaults.fallback.external_terminal = {
+	command = '/usr/bin/alacritty',
+	args = { '--hold', '-e' },
 }
 
-dap.configurations.cs = {
-	{
-		type = "coreclr",
-		name = "launch - netcoredbg",
-		request = "launch",
-		program = function()
-			return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug/', 'file')
-		end,
-	},
-}
 
 local ui = require("dapui")
 
