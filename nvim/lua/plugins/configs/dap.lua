@@ -2,17 +2,25 @@
 -- 	automatic_setup = true,
 -- })
 -- require 'mason-nvim-dap'.setup_handlers()
+--
+local dap = require("dap")
 
-local dap = require('dap')
-dap.adapters.cppdbg = {
-	id = 'cppdbg',
-	type = 'executable',
-	command = '/home/mili/.local/share/nvim/mason/bin/OpenDebugAD7',
+dap.adapters.codelldb = {
+	type = 'server',
+	port = "${port}",
+	executable = {
+		-- CHANGE THIS to your path!
+		command = '/home/mili/.local/share/nvim/mason/bin/codelldb',
+		args = { "--port", "${port}" },
+
+		-- On windows you may have to uncomment this:
+		-- detached = false,
+	}
 }
 dap.configurations.cpp = {
 	{
 		name = "Launch file",
-		type = "cppdbg",
+		type = "codelldb",
 		request = "launch",
 		program = function()
 			return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')

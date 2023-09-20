@@ -5,8 +5,7 @@ vim.api.nvim_set_keymap("n", "<C-n>", ":NvimTreeToggle<cr>", { noremap = true })
 -- vim.api.nvim_set_keymap('n', 'gb', '<CMD>BufferLinePick<CR>', { noremap = true, silent = true})
 vim.api.nvim_set_keymap(
 	"n",
-	"<leader>ts",
-	"<CMD>BufferLinePickClose<CR>",
+	"<leader>ts", "<CMD>BufferLinePickClose<CR>",
 	{ noremap = true, silent = true, desc = "Close the picked buffer" }
 )
 vim.api.nvim_set_keymap("n", "<S-l>", "<CMD>BufferLineCycleNext<CR>", { noremap = true, silent = true })
@@ -42,6 +41,7 @@ vim.api.nvim_set_keymap("s", "<C-p>", "<Plug>luasnip-prev-choice", {})
 local wk = require("which-key")
 local dap = require("dap")
 local ui = require("dapui")
+local cmake = require("cmake-tools")
 
 wk.register({
 	["g"] = {
@@ -62,14 +62,40 @@ wk.register({
 		l = {
 			name = "LSP",
 			a = { "<cmd>CodeActionMenu<cr>", "Code actions" },
+			f = {
+				function()
+					vim.lsp.buf.format();
+				end,
+				"Format current buffer"
+			},
+			s = { "<cmd>Telescope lsp_document_symbols", "Documents References" },
+			d = { "<cmd>Telescope diagnostics<cr>", "Diagnostics"}
 		},
+
+		c = {
+			name = "CMake",
+			r = { "<cmd>CMakeRun<cr>", "Run" },
+			g = { "<cmd>CMakeGenerate<cr>", "Generate" },
+			d = {
+				function()
+					ui.toggle()
+					vim.cmd("CMakeDebug")
+				end,
+				"Debug"
+			},
+			b = { "<cmd>CMakeBuild<cr>", "Build" },
+			c = { "<cmd>CMakeClean<cr>", "Clean" },
+			s = { "<cmd>CMakeStop<cr>", "Stop" }
+		},
+
 		d = {
 			name = "DAP",
 			s = {
 				function()
 					dap.continue()
 					ui.toggle({})
-					vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<c-w>=", false, true, true), "n", false)
+					vim.api.nvim_feedkeys(
+						vim.api.nvim_replace_termcodes("<c-w>=", false, true, true), "n", false)
 				end,
 				"Start session",
 			},
@@ -78,7 +104,8 @@ wk.register({
 					dap.clear_breakpoints()
 					ui.toggle({})
 					dap.terminate()
-					vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-w>=", false, true, true), "n", false)
+					vim.api.nvim_feedkeys(
+						vim.api.nvim_replace_termcodes("<C-w>=", false, true, true), "n", false)
 					require("notify")("Debugger session ended", "warn")
 				end,
 				"End session",
@@ -102,22 +129,26 @@ wk.register({
 				end,
 				"Clear breakpoints",
 			},
+			u = {
+				function()
+					ui.toggle()
+					require("notify")("UI Toggled", "warn")
+				end,
+				"Toggle UI",
+			},
 		},
 		w = { "<cmd>write<cr>", "Write current buffer" },
-		t = {
-			function()
-				require("shade").toggle()
-			end,
-			"Toggle shade",
-		},
 		q = { "<cmd>quit<cr>", "Exit current buffer" },
 		e = { "<cmd>NvimTreeToggle<cr>", "Toggle explorer" },
-		f = { "<cmd>Format<cr>", "Format the current buffer" },
 		s = {
 			function()
 				require("silicon").visualise_cmdline({ to_clip = true })
 			end,
 			"Snap to clipboard",
 		},
+		t = {
+			name = "Telescope",
+			b = { "<cmd>Telescope buffers<cr>", "Buffers" }
+		}
 	},
 })

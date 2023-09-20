@@ -14,3 +14,6 @@ require('plugins.configs.pywal')
 -- Load the essentials
 require('globals.globals')
 require('globals.remaps')
+
+local cfg = {}
+require "lsp_signature".setup(cfg)
