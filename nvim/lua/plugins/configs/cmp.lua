@@ -35,15 +35,12 @@ cmp.setup({
     ),
     ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
     ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-    ["<C-'>"] = cmp.mapping(function()
-      luasnip.jump(1)
-    end, { "i", "s" }),
-    ["<C-;>"] = cmp.mapping(function()
-      luasnip.jump(-1)
-    end, { "i", "s" }),
-    ["<C-h>"] = cmp.mapping(function()
-      luasnip.change_choice(1)
-    end, { "i", "s" }),
+    -- ["<C-'>"] = cmp.mapping(function()
+    --   luasnip.jump(1)
+    -- end, { "i", "s" }),
+    -- ["<C-;>"] = cmp.mapping(function()
+    --   luasnip.jump(-1)
+    -- end, { "i", "s" }),
   }),
   sources = {
     { name = "luasnip" },
@@ -64,8 +61,8 @@ cmp.setup({
     end,
   },
   window = {
-    completion = cmp.config.window.bordered(),
-    documentation = cmp.config.window.bordered(),
+    completion = cmp.config.window.bordered({ border = "single" }),
+    documentation = cmp.config.window.bordered({border = "single"}),
   },
   formatting = {
     -- format = lspkind.cmp_format {
@@ -94,11 +91,11 @@ cmp.setup({
     end,
   },
   experimental = {
-    ghost_text = {},
-    -- native_menu = true,
+    ghost_text = true
   },
   view = {
     entries = "custom",
+    ghost_text = true,
   },
   completion = {
     completeopt = "menu,menuone,noinsert",

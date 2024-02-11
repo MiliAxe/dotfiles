@@ -36,16 +36,30 @@ vim.opt.conceallevel = 1
 vim.g.tex_conceal = 'abdmg'
 
 -- Format on save
-vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format({async = true})]]
+-- vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format({async = true})]]
 
 -- GuessIndent on save
 -- vim.cmd [[autocmd BufWritePre <buffer> GuessIndent]]
 
 -- vim.cmd [[autocmd InsertLeave <buffer> lua vim.lsp.codelens.refresh()]]
+--
+-- vim.api.nvim_create_autocmd({ "InsertLeave" }, {
+-- 	pattern = { "*.cs" },
+-- 	callback = function()
+-- 		vim.lsp.codelens.refresh()
+-- 	end
+-- })
 
-vim.api.nvim_create_autocmd({ "InsertLeave" }, {
-	pattern = { "*.cs" },
-	callback = function()
-		vim.lsp.codelens.refresh()
-	end
+-- vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+-- 	callback = function()
+-- 		vim.lsp.buf.format()
+-- 	end
+-- })
+
+vim.api.nvim_create_autocmd('TextYankPost', {
+  callback = function()
+    vim.highlight.on_yank({ timeout = 200 })
+  end,
 })
+
+vim.api.nvim_command('autocmd VimResized * wincmd =')

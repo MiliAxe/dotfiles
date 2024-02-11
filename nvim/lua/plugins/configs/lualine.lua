@@ -76,7 +76,8 @@ my_filename.icon_hl_cache = {}
 require('lualine').setup {
   options = {
     icons_enabled = true,
-    theme = 'pywal',
+    -- theme = 'pywal16-nvim',
+    theme = 'gruvbox_dark',
     component_separators = { left = '', right = '' },
     section_separators = { left = '', right = '' },
     disabled_filetypes = {

@@ -50,23 +50,26 @@ ui.setup({
 		toggle = "t",
 	},
 	expand_lines = vim.fn.has("nvim-0.7"),
-	-- layouts = {
-	-- 	{
-	-- 		elements = {
-	-- 			"scopes",
-	-- 		},
-	-- 		size = 0.3,
-	-- 		position = "right"
-	-- 	},
-	-- 	{
-	-- 		elements = {
-	-- 			"repl",
-	-- 			"breakpoints"
-	-- 		},
-	-- 		size = 0.3,
-	-- 		position = "bottom",
-	-- 	},
-	-- },
+	layouts = {
+		{
+			elements = {
+				"watches",
+				{ id = "scopes", size = 0.25 },
+				"breakpoints",
+				"stacks",
+			},
+			size = 60,
+			position = "right",
+		},
+		{
+			elements = {
+				"repl",
+				"console",
+			},
+			size = 0.25,
+			position = "bottom",
+		},
+	},
 	floating = {
 		max_height = nil,
 		max_width = nil,

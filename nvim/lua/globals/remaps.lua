@@ -1,5 +1,11 @@
+local keymap = vim.api.nvim_set_keymap
+local default_opts = { noremap = true, silent = true }
+local expr_opts = { noremap = true, expr = true, silent = true }
+local ls = require("luasnip")
+
 -- nvim tree
-vim.api.nvim_set_keymap("n", "<C-n>", ":NvimTreeToggle<cr>", { noremap = true })
+keymap("n", "<C-n>", ":NvimTreeToggle<cr>", default_opts);
+
 
 -- bufferline
 -- vim.api.nvim_set_keymap('n', 'gb', '<CMD>BufferLinePick<CR>', { noremap = true, silent = true})
@@ -8,40 +14,41 @@ vim.api.nvim_set_keymap(
 	"<leader>ts", "<CMD>BufferLinePickClose<CR>",
 	{ noremap = true, silent = true, desc = "Close the picked buffer" }
 )
-vim.api.nvim_set_keymap("n", "<S-l>", "<CMD>BufferLineCycleNext<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<S-h>", "<CMD>BufferLineCyclePrev<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap(
+keymap("n", "<S-l>", "<CMD>BufferLineCycleNext<CR>", default_opts)
+keymap("n", "<S-h>", "<CMD>BufferLineCyclePrev<CR>", default_opts)
+
+keymap(
 	"n",
 	"]b",
 	"<CMD>BufferLineMoveNext<CR>",
 	{ noremap = true, silent = true, desc = "Move current buffer back" }
 )
-vim.api.nvim_set_keymap(
+keymap(
 	"n",
 	"[b",
 	"<CMD>BufferLineMovePrev<CR>",
 	{ noremap = true, silent = true, desc = "Move current buffer next" }
 )
-vim.api.nvim_set_keymap(
+keymap(
 	"n",
 	"gs",
 	"<CMD>BufferLineSortByDirectory<CR>",
 	{ noremap = true, silent = true, desc = "Sort buffer by directory" }
 )
 
--- formating
--- vim.api.nvim_set_keymap('n', '<leader>f', '<CMD>lua vim.lsp.buf.format()<CR>',
--- 	{ noremap = true, silent = true, desc = "Format the current buffer" })
---
-vim.api.nvim_set_keymap("i", "<C-k>", "<Plug>luasnip-next-choice", {})
-vim.api.nvim_set_keymap("s", "<C-n>", "<Plug>luasnip-next-choice", {})
-vim.api.nvim_set_keymap("i", "<C-p>", "<Plug>luasnip-prev-choice", {})
-vim.api.nvim_set_keymap("s", "<C-p>", "<Plug>luasnip-prev-choice", {})
+keymap("i", "<C-k>", "<Plug>luasnip-next-choice", default_opts)
+keymap("s", "<C-n>", "<Plug>luasnip-next-choice", default_opts)
+keymap("i", "<C-p>", "<Plug>luasnip-prev-choice", default_opts)
+keymap("s", "<C-p>", "<Plug>luasnip-prev-choice", default_opts)
+
+vim.keymap.set({"i"}, "<C-K>", function() ls.expand() end, {silent = true})
+vim.keymap.set({"i", "s"}, "<C-L>", function() ls.jump( 1) end, {silent = true})
+vim.keymap.set({"i", "s"}, "<C-J>", function() ls.jump(-1) end, {silent = true})
 
 local wk = require("which-key")
 local dap = require("dap")
 local ui = require("dapui")
-local cmake = require("cmake-tools")
+-- local cmake = require("cmake-tools")
 
 wk.register({
 	["g"] = {
@@ -69,7 +76,7 @@ wk.register({
 				"Format current buffer"
 			},
 			s = { "<cmd>Telescope lsp_document_symbols", "Documents References" },
-			d = { "<cmd>Telescope diagnostics<cr>", "Diagnostics"}
+			d = { "<cmd>Telescope diagnostics<cr>", "Diagnostics" }
 		},
 
 		c = {
@@ -146,9 +153,15 @@ wk.register({
 			end,
 			"Snap to clipboard",
 		},
-		t = {
+		T = {
 			name = "Telescope",
 			b = { "<cmd>Telescope buffers<cr>", "Buffers" }
+		},
+		t = {
+			name = "Trouble",
+			d = { "<cmd>Trouble doocument_diagnostics<cr>", "Diagnostics" },
+			r = { "<cmd>Trouble lsp_references<cr>", "References" },
+			q = { "<cmd>Trouble quickfix<cr>", "Quickfix" }
 		}
 	},
 })

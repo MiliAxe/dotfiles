@@ -1,10 +1,8 @@
-
-
 -- Load the plugins
 require('plugins')
 
 -- Speed up nvim startup time
-require('impatient')
+-- require('impatient')
 
 require('plugins.configs.luasnip')
 
@@ -15,5 +13,3 @@ require('plugins.configs.pywal')
 require('globals.globals')
 require('globals.remaps')
 
-local cfg = {}
-require "lsp_signature".setup(cfg)
