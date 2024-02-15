@@ -64,7 +64,7 @@ settings["palette_overwrite"] = {}
 -- Set the colorscheme to use here.
 -- Available values are: `catppuccin`, `catppuccin-latte`, `catppucin-mocha`, `catppuccin-frappe`, `catppuccin-macchiato`.
 ---@type string
-settings["colorscheme"] = "gruvbox"
+settings["colorscheme"] = "catppuccin"
 
 -- Set it to true if your terminal has transparent background.
 ---@type boolean
@@ -102,10 +102,10 @@ settings["server_formatting_block_list"] = {
 settings["lsp_deps"] = {
 	"bashls",
 	"clangd",
-	-- "html",
-	-- "jsonls",
-	-- "lua_ls",
-	-- "pylsp",
+	"html",
+	"jsonls",
+	"lua_ls",
+	"pylsp",
 	-- "gopls",
 }
 
@@ -114,15 +114,15 @@ settings["lsp_deps"] = {
 -- in `code_actions`, `completion`, `diagnostics`, `formatting`, `hover` folders:
 -- https://github.com/nvimtools/none-ls.nvim/tree/main/lua/null-ls/builtins
 ---@type string[]
--- settings["null_ls_deps"] = {
--- 	"clang_format",
--- 	"gofumpt",
--- 	"goimports",
--- 	"prettier",
--- 	"shfmt",
--- 	"stylua",
--- 	"vint",
--- }
+settings["null_ls_deps"] = {
+	"clang_format",
+	"gofumpt",
+	"goimports",
+	"prettier",
+	"shfmt",
+	"stylua",
+	"vint",
+}
 
 -- Set the Debug Adapter Protocol (DAP) clients that will be installed and configured during bootstrap here.
 -- Check the below link for all supported DAPs:
@@ -166,7 +166,7 @@ settings["treesitter_deps"] = {
 ---@type { font_name: string, font_size: number }
 settings["gui_config"] = {
 	font_name = "JetBrainsMono Nerd Font",
-	font_size = 7,
+	font_size = 10,
 }
 
 -- Set the options specific to `neovide` here.
@@ -185,12 +185,7 @@ settings["neovide_config"] = {
 	cursor_vfx_particle_speed = 20.0,
 	cursor_vfx_particle_density = 5.0,
 	cursor_vfx_particle_lifetime = 1.2,
-    padding_top=35,
-    padding_left=28,
-    padding_right=28,
-    padding_bottom=10,
 }
-
 
 -- Set the dashboard startup image here
 -- You can generate the ascii image using: https://github.com/TheZoraiz/ascii-image-converter

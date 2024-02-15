@@ -80,7 +80,7 @@ return function()
 				require("telescope.builtin").find_files()
 			end,
 		}),
-		button("space f w", " Word find", leader, nil, {
+		button("space f w", " Word find", leader, nil, {
 			noremap = true,
 			silent = true,
 			nowait = true,
@@ -94,7 +94,7 @@ return function()
 	local function footer()
 		local stats = require("lazy").stats()
 		local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-		return "   Happy coding!"
+		return "   Have Fun with neovim"
 			.. "  󰀨 v"
 			.. vim.version().major
 			.. "."
