@@ -1,0 +1,40 @@
+#!/usr/bin/python3
+
+import json
+from os import popen
+from sys import stdout
+from time import sleep
+
+
+def cmd(command):
+    with popen(command) as process:
+        return process.read()[0:-1]
+
+# Missing items behave as if they were None
+
+
+def update():
+    return [{
+        'application_id': 1080416562000953394,
+        # Use `cmd('command_to_run')` if you want to run command like in terminal and show it's result, otherwise if you want show text here comment this line andd uncomment next:
+        'state': "Running Arch Linux",
+        # 'state': 'Your text',
+        'details': cmd('uname -r'),  # same here
+        'large_image': {'key': 'https://cdn.discordapp.com/app-icons/1080416562000953394/6df92d6183362529e9114fd31fb7d8f1.png?size=256', 'text': 'Cute Penguin!'},
+        'small_image': {'key': 'https://cdn0.iconfinder.com/data/icons/flat-round-system/512/archlinux-512.png', 'text': 'Arch Btw'},
+        # 'start_timestamp': int(cmd('date -d "$(uptime -s)" +%s')),
+        'start_timestamp': cmd("potctl -1 0"),
+        'end_timestamp': None,
+        # 'buttons': [{'label': 'some_button',
+        #             'url': 'https://example.com/'
+        #              }],
+        # 'party': [1, 3],  # 'party': [current party size, max party size],
+    }]
+
+
+while True:
+    print(json.dumps(update()))
+
+    stdout.flush()
+
+    sleep(10)

@@ -1,0 +1,71 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-c",
+      "-std=c99",
+      "-pedantic",
+      "-Wall",
+      "-Wno-unused-function",
+      "-Wno-deprecated-declarations",
+      "-Os",
+      "-I/usr/X11R6/include",
+      "-I/usr/include/freetype2",
+      "-I/usr/include/fribidi",
+      "-D_DEFAULT_SOURCE",
+      "-D_BSD_SOURCE",
+      "-D_XOPEN_SOURCE=700L",
+      "-DVERSION=\"6.4\"",
+      "-DXINERAMA",
+      "drw.c"
+    ],
+    "directory": "/home/mili/.suckless/dwm-flexipatch",
+    "file": "/home/mili/.suckless/dwm-flexipatch/drw.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-c",
+      "-std=c99",
+      "-pedantic",
+      "-Wall",
+      "-Wno-unused-function",
+      "-Wno-deprecated-declarations",
+      "-Os",
+      "-I/usr/X11R6/include",
+      "-I/usr/include/freetype2",
+      "-I/usr/include/fribidi",
+      "-D_DEFAULT_SOURCE",
+      "-D_BSD_SOURCE",
+      "-D_XOPEN_SOURCE=700L",
+      "-DVERSION=\"6.4\"",
+      "-DXINERAMA",
+      "dwm.c"
+    ],
+    "directory": "/home/mili/.suckless/dwm-flexipatch",
+    "file": "/home/mili/.suckless/dwm-flexipatch/dwm.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-c",
+      "-std=c99",
+      "-pedantic",
+      "-Wall",
+      "-Wno-unused-function",
+      "-Wno-deprecated-declarations",
+      "-Os",
+      "-I/usr/X11R6/include",
+      "-I/usr/include/freetype2",
+      "-I/usr/include/fribidi",
+      "-D_DEFAULT_SOURCE",
+      "-D_BSD_SOURCE",
+      "-D_XOPEN_SOURCE=700L",
+      "-DVERSION=\"6.4\"",
+      "-DXINERAMA",
+      "util.c"
+    ],
+    "directory": "/home/mili/.suckless/dwm-flexipatch",
+    "file": "/home/mili/.suckless/dwm-flexipatch/util.c"
+  }
+]

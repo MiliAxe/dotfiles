@@ -1,0 +1,18 @@
+import = ["/home/mili/.config/alacritty/gruvbox.toml"]
+
+[cursor.style]
+shape = "Beam"
+
+[font]
+size = 10.0
+
+[font.normal]
+family = "JetBrainsMono NF"
+# style = "Bold"
+
+[window]
+opacity = 0.75
+
+[window.padding]
+x = 20
+y = 20

@@ -1,0 +1,9 @@
+playerctl -s -p $(< ~/.config/polybar/scripts/tmplayer) status
+
+status=$(playerctl -s -p $(< ~/.config/polybar/scripts/tmplayer) status)
+
+if [[ $status == "" ]]
+then
+	echo "Offline"
+fi
+

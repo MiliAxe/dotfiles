@@ -1,0 +1,50 @@
+# Font
+font = "/usr/share/fonts/TTF/JetBrainsMonoNerdFont-Medium.ttf"
+font-size = 8
+
+# Window Style
+horizontal = true
+anchor = top
+width = 1900
+height = 28
+
+corner-radius = 10
+outline-width = 0 
+border-width = 0
+min-input-width = 120
+result-spacing = 30
+padding-top = 4
+padding-bottom = 0
+padding-left = 20
+padding-right = 20
+
+margin-top = 5
+
+# Text style
+prompt-text = ""
+prompt-padding = 30
+
+background-color = #1e1e2e
+text-color = #cdd6f4
+
+prompt-background = #a6e3a1
+prompt-color = #313244
+prompt-background-padding = 4, 10
+prompt-background-corner-radius = 8
+
+input-color = #313244
+input-background = #eba0ac
+input-background-padding = 4, 10
+input-background-corner-radius = 8
+
+# alternate-result-color = #cba6f7
+# alternate-result-background-padding = 4, 10
+# alternate-result-background-corner-radius = 12
+
+selection-color = #1e1e2e
+selection-background = #fab387
+selection-background-padding = 4, 10
+selection-background-corner-radius = 8
+selection-match-color = #fff
+
+clip-to-padding = false

@@ -1,0 +1,27 @@
+2024/01/23-14:29:05.263 10d90 Reusing MANIFEST /home/mili/.config/VencordDesktop/Local Storage/leveldb/MANIFEST-000001
+2024/01/23-14:29:05.272 10d90 Recovering log #16
+2024/01/23-14:29:05.273 10d90 Reusing old log /home/mili/.config/VencordDesktop/Local Storage/leveldb/000016.log 
+2024/01/23-14:31:06.187 10d90 Level-0 table #21: started
+2024/01/23-14:31:06.189 10d90 Level-0 table #21: 73020 bytes OK
+2024/01/23-14:31:06.190 10d90 Delete type=0 #16
+2024/01/23-15:04:06.188 10d90 Level-0 table #23: started
+2024/01/23-15:04:06.190 10d90 Level-0 table #23: 22764 bytes OK
+2024/01/23-15:04:06.192 10d90 Delete type=0 #20
+2024/01/23-15:49:06.188 10d90 Level-0 table #25: started
+2024/01/23-15:49:06.191 10d90 Level-0 table #25: 13625 bytes OK
+2024/01/23-15:49:06.193 10d90 Delete type=0 #22
+2024/01/23-16:50:06.188 10d90 Level-0 table #27: started
+2024/01/23-16:50:06.190 10d90 Level-0 table #27: 8641 bytes OK
+2024/01/23-16:50:06.193 10d90 Delete type=0 #24
+2024/01/23-16:50:06.193 10d90 Compacting 4@0 + 1@1 files
+2024/01/23-16:50:06.201 10d90 Generated table #28@0: 39 keys, 68243 bytes
+2024/01/23-16:50:06.201 10d90 Compacted 4@0 + 1@1 files => 68243 bytes
+2024/01/23-16:50:06.203 10d90 compacted to: files[ 0 1 1 0 0 0 0 ]
+2024/01/23-16:50:06.203 10d90 Delete type=2 #21
+2024/01/23-16:50:06.204 10d90 Delete type=2 #23
+2024/01/23-16:50:06.204 10d90 Delete type=2 #18
+2024/01/23-16:50:06.204 10d90 Delete type=2 #27
+2024/01/23-16:50:06.204 10d90 Delete type=2 #25
+2024/01/23-17:51:06.188 10d90 Level-0 table #30: started
+2024/01/23-17:51:06.190 10d90 Level-0 table #30: 9944 bytes OK
+2024/01/23-17:51:06.192 10d90 Delete type=0 #26

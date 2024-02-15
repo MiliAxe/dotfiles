@@ -1,0 +1,26 @@
+[ColorEffects:Inactive]
+ChangeSelectionColor = true
+
+[Colors:Button]
+BackgroundNormal     = {background.rgb}
+ForegroundNormal     = {foreground.rgb}
+
+[Colors:Selection]
+BackgroundNormal     = {foreground.rgb}
+ForegroundNormal     = {background.rgb}
+
+[Colors:View]
+BackgroundAlternate  = {background.rgb}
+BackgroundNormal     = {background.rgb}
+ForegroundLink       = {foreground.rgb}
+ForegroundNormal     = {foreground.rgb}
+
+[Colors:Window]
+BackgroundNormal     = {background.rgb}
+ForegroundNormal     = {foreground.rgb}
+
+
+
+
+[General]
+Name                 = Pywal
