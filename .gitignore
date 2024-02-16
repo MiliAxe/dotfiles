@@ -4,3 +4,4 @@ lazy-lock.json
 Extracted/
 Backup/
 GPUCache/
+__pycache__/
