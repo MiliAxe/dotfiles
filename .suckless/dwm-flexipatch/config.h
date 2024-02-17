@@ -41,8 +41,8 @@ static const int smartgaps_fact =
 #if AUTOSTART_PATCH
 static const char autostartblocksh[] = "autostart_blocking.sh";
 static const char autostartsh[] = "autostart.sh";
-static const char dwmdir[] = "dwm";
-static const char localshare[] = ".local/share";
+static const char dwmdir[] = "dwm-flexipatch";
+static const char localshare[] = ".suckless";
 #endif // AUTOSTART_PATCH
 #if BAR_ANYBAR_PATCH
 static const int usealtbar = 1;             /* 1 means use non-dwm status bar */
@@ -53,7 +53,7 @@ static const char *altbarcmd =
 #if BAR_HOLDBAR_PATCH
 static const int showbar = 0; /* 0 means no bar */
 #else
-static const int showbar = 1;           /* 0 means no bar */
+static const int showbar = 1; /* 0 means no bar */
 #endif                       // BAR_HOLDBAR_PATCH
 static const int topbar = 1; /* 0 means bottom bar */
 #if TAB_PATCH
