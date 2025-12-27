@@ -19,7 +19,7 @@
  * bar. Awesomebar takes precedence over fancybar.
  * https://dwm.suckless.org/patches/awesomebar/
  */
-#define BAR_AWESOMEBAR_PATCH 0
+#define BAR_AWESOMEBAR_PATCH 1
 
 /* This patch depends on statuscmd patch and adds integration with a (patched)
  * dwmblocks instance to give a clickable status bar. One must not necessarily
@@ -59,7 +59,7 @@
  * the centeredwindowname patch.
  * https://dwm.suckless.org/patches/fancybar/
  */
-#define BAR_FANCYBAR_PATCH 1
+#define BAR_FANCYBAR_PATCH 0
 
 /* Being an evolution of the bartabgroups patch the flexwintitle patch
  * specifically taps into the many layout options that flextile-deluxe offers to
@@ -1239,7 +1239,7 @@
  * awesomebar, bartabgroups and similar patches make the tab patch redundant.
  * https://dwm.suckless.org/patches/tab/
  */
-#define TAB_PATCH 0
+#define TAB_PATCH 1
 
 /* Adds keyboard shortcuts to move all (or only floating) windows from one tag
  * to another. https://dwm.suckless.org/patches/tagall/

@@ -920,7 +920,7 @@ static const char *xkb_layouts[] = {
 #endif // XKB_PATCH
 
 /* key definitions */
-#define MODKEY Mod1Mask
+#define MODKEY Mod4Mask
 #if COMBO_PATCH && SWAPTAGS_PATCH && TAGOTHERMONITOR_PATCH
 #define TAGKEYS(KEY, TAG)                                                      \
     {MODKEY, KEY, comboview, {.ui = 1 << TAG}},                                \
@@ -1028,7 +1028,7 @@ static const char *dmenucmd[] = {"dmenu_run",
                                  topbar ? NULL : "-b",
 #endif // BAR_DMENUMATCHTOP_PATCH
                                  NULL};
-static const char *termcmd[] = {"st", NULL};
+static const char *termcmd[] = {"alacritty-smart", NULL};
 
 #if BAR_STATUSCMD_PATCH
 #if BAR_DWMBLOCKS_PATCH
@@ -1063,8 +1063,14 @@ static const char volupsig[] =
     "pactl set-sink-volume 0 +5%; kill -44 $(pidof dwmblocks)";
 static const char voldownsig[] =
     "pactl set-sink-volume 0 -5%; kill -44 $(pidof dwmblocks)";
+static const char dmenuemoji[] =
+    "dmenu-emoji | dmenu -i -l 10 | awk '{print $1}' | tr -d '\n' | xclip "
+    "-selection clipboard";
 static const char togglecam[] = "togglecam";
 static const char togglemic[] = "togglemic";
+static const char clipmenu[] = "dmenuclip";
+static const char *nexttrack[] = {"playerctl", "next", NULL};
+static const char *prevtrack[] = {"playerctl", "previous", NULL};
 
 #if ON_EMPTY_KEYS_PATCH
 static const char *firefoxcmd[] = {"firefox", NULL};
@@ -1085,12 +1091,16 @@ static const Key keys[] = {
     {MODKEY | ShiftMask, XK_s, spawn, SHCMD(screenshotcmd)},
     {MODKEY | ShiftMask, XK_m, spawn, SHCMD(togglemic)},
     {MODKEY | ShiftMask, XK_n, spawn, SHCMD(togglecam)},
+    {MODKEY, XK_e, spawn, SHCMD(dmenuemoji)},
+    {MODKEY, XK_y, spawn, SHCMD(clipmenu)},
     {0, XF86XK_AudioMute, spawn, {.v = mutecmd}},
     // { 0,                            XF86XK_AudioRaiseVolume, spawn, {.v =
     // volupcmd } }, { 0,                            XF86XK_AudioLowerVolume,
     // spawn, {.v = voldowncmd } },
     {0, XF86XK_AudioRaiseVolume, spawn, SHCMD(volupsig)},
     {0, XF86XK_AudioLowerVolume, spawn, SHCMD(voldownsig)},
+    {0, XF86XK_AudioNext, spawn, {.v = nexttrack}},
+    {0, XF86XK_AudioPrev, spawn, {.v = prevtrack}},
     {0, XF86XK_AudioMicMute, spawn, {.v = mutemic}},
     {0, XF86XK_MonBrightnessUp, spawn, {.v = brightnessup}},
     {0, XF86XK_MonBrightnessDown, spawn, {.v = brightnessdown}},
@@ -1328,7 +1338,7 @@ static const Key keys[] = {
      mirrorlayout,
      {0}}, /* flextile, flip master and stack areas */
 #endif     // FLEXTILE_DELUXE_LAYOUT
-    {MODKEY, XK_space, setlayout, {0}},
+    // {MODKEY, XK_space, setlayout, {0}},
     {MODKEY | ShiftMask, XK_space, togglefloating, {0}},
 #if MAXIMIZE_PATCH
     {MODKEY | ControlMask | ShiftMask, XK_h, togglehorizontalmax, {0}},
@@ -1696,7 +1706,7 @@ static const Button buttons[] = {
 #if PLACEMOUSE_PATCH
     /* placemouse options, choose which feels more natural:
      *    0 - tiled position is relative to mouse cursor
-     *    1 - tiled postiion is relative to window center
+     *    1 - tiled position is relative to window center
      *    2 - mouse pointer warps to window center
      *
      * The moveorplace uses movemouse or placemouse depending on the floating

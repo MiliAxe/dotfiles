@@ -1,4 +1,4 @@
 #!/bin/bash
 
-wpg --theme base16-gruvbox-soft
+wpg -n --theme base16-gruvbox-soft
 feh --bg-fill $1
