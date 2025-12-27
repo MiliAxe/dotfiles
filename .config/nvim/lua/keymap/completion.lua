@@ -1,23 +1,39 @@
 local bind = require("keymap.bind")
 local map_cr = bind.map_cr
-local map_cmd = bind.map_cmd
 local map_callback = bind.map_callback
 
-local plug_map = {
-	["n|<A-f>"] = map_cmd("<Cmd>FormatToggle<CR>"):with_noremap():with_desc("Formater: Toggle format on save"),
+local mappings = {
+	fmt = {
+		["n|<A-f>"] = map_cr("FormatToggle"):with_noremap():with_silent():with_desc("formatter: Toggle format on save"),
+		["n|<A-S-f>"] = map_cr("Format"):with_noremap():with_silent():with_desc("formatter: Format buffer manually"),
+	},
 }
-bind.nvim_load_mapping(plug_map)
+bind.nvim_load_mapping(mappings.fmt)
 
-local mapping = {}
+--- The following code allows this file to be exported ---
+---    for use with LSP lazy-loaded keymap bindings    ---
 
-function mapping.lsp(buf)
+local M = {}
+
+---@param buf integer
+function M.lsp(buf)
 	local map = {
 		-- LSP-related keymaps, ONLY effective in buffers with LSP(s) attached
 		["n|<leader>li"] = map_cr("LspInfo"):with_silent():with_buffer(buf):with_desc("lsp: Info"),
 		["n|<leader>lr"] = map_cr("LspRestart"):with_silent():with_buffer(buf):with_nowait():with_desc("lsp: Restart"),
-		["n|go"] = map_cr("AerialToggle!"):with_silent():with_buffer(buf):with_desc("lsp: Toggle outline"),
+		["n|go"] = map_cr("Trouble symbols toggle win.position=right")
+			:with_silent()
+			:with_buffer(buf)
+			:with_desc("lsp: Toggle outline"),
 		["n|gto"] = map_callback(function()
-				require("telescope").extensions.aerial.aerial()
+				if require("core.settings").search_backend == "fzf" then
+					local prompt_position = require("telescope.config").values.layout_config.horizontal.prompt_position
+					require("fzf-lua").lsp_document_symbols({
+						fzf_opts = { ["--layout"] = prompt_position == "top" and "reverse" or "default" },
+					})
+				else
+					require("telescope.builtin").lsp_document_symbols()
+				end
 			end)
 			:with_silent()
 			:with_buffer(buf)
@@ -37,7 +53,11 @@ function mapping.lsp(buf)
 		["n|gs"] = map_callback(function()
 			vim.lsp.buf.signature_help()
 		end):with_desc("lsp: Signature help"),
-		["n|gr"] = map_cr("Lspsaga rename"):with_silent():with_buffer(buf):with_desc("lsp: Rename in file range"),
+		["n|gr"] = map_cr("Lspsaga rename")
+			:with_silent()
+			:with_nowait()
+			:with_buffer(buf)
+			:with_desc("lsp: Rename in file range"),
 		["n|gR"] = map_cr("Lspsaga rename ++project")
 			:with_silent()
 			:with_buffer(buf)
@@ -50,6 +70,10 @@ function mapping.lsp(buf)
 		["n|gd"] = map_cr("Glance definitions"):with_silent():with_buffer(buf):with_desc("lsp: Preview definition"),
 		["n|gD"] = map_cr("Lspsaga goto_definition"):with_silent():with_buffer(buf):with_desc("lsp: Goto definition"),
 		["n|gh"] = map_cr("Glance references"):with_silent():with_buffer(buf):with_desc("lsp: Show reference"),
+		["n|gm"] = map_cr("Glance implementations")
+			:with_silent()
+			:with_buffer(buf)
+			:with_desc("lsp: Show implementation"),
 		["n|gci"] = map_cr("Lspsaga incoming_calls")
 			:with_silent()
 			:with_buffer(buf)
@@ -58,6 +82,18 @@ function mapping.lsp(buf)
 			:with_silent()
 			:with_buffer(buf)
 			:with_desc("lsp: Show outgoing calls"),
+		["n|<leader>lv"] = map_callback(function()
+				_toggle_virtuallines()
+			end)
+			:with_noremap()
+			:with_silent()
+			:with_desc("lsp: Toggle virtual lines"),
+		["n|<leader>lh"] = map_callback(function()
+				_toggle_inlayhint()
+			end)
+			:with_noremap()
+			:with_silent()
+			:with_desc("lsp: Toggle inlay hints"),
 	}
 	bind.nvim_load_mapping(map)
 
@@ -67,4 +103,4 @@ function mapping.lsp(buf)
 	end
 end
 
-return mapping
+return M

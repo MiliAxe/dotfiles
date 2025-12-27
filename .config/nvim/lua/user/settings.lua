@@ -2,17 +2,17 @@
 local settings = {}
 
 -- Examples
-settings["use_ssh"] = true
+-- settings["use_ssh"] = true
 
 -- Disable the following two plugins
-settings["disabled_plugins"] = {
-	-- "rainbowhxch/accelerated-jk.nvim",
-	--    "max397574/better-escape.nvim",
-}
+-- settings["disabled_plugins"] = {
+-- "rainbowhxch/accelerated-jk.nvim",
+--    "max397574/better-escape.nvim",
+-- }
 
 settings["colorscheme"] = "gruvbox"
 
-settings["dashboard_image"] = {}
+-- settings["dashboard_image"] = {}
 settings["dashboard_image"] = {
 	[[                                                ]],
 	[[                                          _.oo. ]],
@@ -32,5 +32,7 @@ settings["dashboard_image"] = {
 	[[  ^^                                            ]],
 	[[                                                ]],
 }
+
+settings["use_chat"] = false
 
 return settings
