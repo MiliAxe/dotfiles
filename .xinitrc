@@ -1,2 +1,10 @@
-bash ~/.suckless/dwm-flexipatch/scripts/wal.sh ~/Pictures/Wallpapers/1920x1080-dark-archlinux2.png
+systemctl --user import-environment DISPLAY XAUTHORITY
+
+systemctl --user start darkman.service
+
+export QT_QPA_PLATFORMTHEME=gtk3
+
+dark_status=$(darkman get)
+bash ~/.local/share/darkman/wpg.sh $dark_status
+
 exec dwm
